@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+    <title style="fond-size:24px;">About Me</title>
+
+    <style>
+        h1 {
+            font-size: 1.5em;
+        }
+
+        #canvas1 {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        #title1 {
+            color: white;
+        }
+
+        #subtitle1 {
+            position: absolute;
+            color: black;
+            top: 0%;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+        }
+
+        p {
+            padding: 5px;
+        }
+
+        .button {
+            position: absolute;
+            z-index: 1;
+            background-color: lightgray;
+            width: 15%;
+            height: 10%;
+            color: black;
+            border: 2px solid 33d7ff;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 175%;
+            font-family: "Times New Roman", Times, serif;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .div1 {
+            position: absolute;
+            top: 27%;
+            left: 10%;
+            background-color: lightgrey;
+            width: 70%;
+            z-index: 1;
+            border: 6px solid grey;
+            padding: 45px;
+            margin: 5px;
+        }
+
+        .imageRow1 {
+            float: center;
+            width: 80%;
+            padding: 5px;
+            justify-content: center;
+        }
+
+        .imgContainer {
+            float: left;
+            margin: 5px
+        }
+
+        .button1 {
+            top: calc(13% + 10px);
+        }
+
+        .button:hover {
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color:black;">
+
+    <canvas id="canvas1">
+        <script src="sketch.js"></script>
+    </canvas>
+
+    <H1 id="title1">About Me</H1>
+
+    <div class="div1" ID="boxed">
+
+        <center>
+
+            <H2 id="subtitle1">Dadmehr Daniel Ghasemfar</H2>
+
+            <p> &emsp; I am a student of Mechanical Engineering at Duke University with a minor in Mathematics and Psychology and a focus in Aerospace Engineering. I am currently set to graduate in 2024 and am hoping to pursue a graduate degree. I have worked with the Duke General Robotics Lab for the last two years, doing research in sound simulation and AI. In my field, I am particularly interested in control systems, modelling, robotics, and mechatronics. As you can see from this custom website, I also enjoy working at the intersection of STEM and visual art.
+            </p>
+
+
+            <div class="imageRow1">
+                <div class="imgContainer">
+                    <img src="Dadmehr1.JPG" height="150" width="150" />
+                </div>
+                <div class="imgContainer">
+                    <img src="Dadmehr2.JPG" height="150" width="150" />
+                </div>
+                <div class="imgContainer">
+                    <img src="Dadmehr3.JPG" height="150" width="150" />
+                </div>
+                <div class="imgContainer">
+                    <img src="Dadmehr4.JPG" height="150" width="150" />
+                </div>
+            </div>
+
+            <p style="clear:both;"> <br> In my free time I enjoy running, calisthenics, cooking and grilling, and occasionaly techno/EDM. I was born in Iran, moved to Prague, Czech Republic from the ages of 7 to 14, moved to the Bay Area, California from 15 to 19, and have been between DC and Durham, North Carolina ever since (Currently 21 years old). I am fluent in Farsi and speak a little Spanish.</p>
+
+        </center>
+
+    </div>
+
+    <button class="button button1" onclick=window.location.href="index.html" ;">Homepage</button>
+
+
+
+</body>
+
+</html>

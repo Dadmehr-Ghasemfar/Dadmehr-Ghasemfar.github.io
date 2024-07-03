@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+    <title style="fond-size:24px;">One Pound Battle Robot</title>
+
+    <style>
+        h1 {
+            font-size: 1.5em;
+        }
+        
+        #canvas1 {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+        
+        #title1 {
+            color: white;
+        }
+
+        #subtitle1 {
+            position: absolute;
+            z-index: 1;
+            color: black;
+            top: 0%;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+        }
+        
+        #paragraph1 {
+            position: absolute;
+            z-index: 1;
+            color: azure;
+            top: 20%;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+        }
+
+
+        .button {
+            position: absolute;
+            z-index: 1;
+            background-color: lightgray;
+            width: 15%;
+            height: 10%;
+            color: black;
+            border: 2px solid 33d7ff;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 175%;
+            font-family: "Times New Roman", Times, serif;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        
+        div {
+            position: absolute;
+            top: 27%;
+            left: 10%;
+            background-color: lightgrey;
+            width: 70%;
+            z-index: 1;
+            border: 6px solid grey;
+            padding: 55px;
+            margin: 5px;
+        }
+
+        .button1 {
+            top: calc(13% + 10px);
+        }
+
+
+        .button:hover {
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color:black;">
+
+    <canvas id="canvas1">
+        <script src="sketch.js"></script>
+    </canvas>
+
+    <H1 id="title1">One Pound Battle Robot</H1>
+    
+    <div ID="boxed">
+    
+    <center>
+    
+    <H2 id="subtitle1">Tyler Bletsch Robotics Team</H2>
+        
+    <p> &emsp; Every semester, Dr. Tyler Bletsch - a professor of engineering at Duke University - hosts a 1lb robotics battle. Me and my friends decided to throw together a robot in a couple days and compete. The entire build consists of a 3D printed body, a metallic spinning bludgeon weapon, motors, ESC's, batteries, radio transciever, and homemade wheels (3D printed hub and acrylic tires)</p>
+        
+    <img src="Battle_Butt_in_Black.png" alt="" width=95% height=95%>
+                
+    <p> Although we came last in the tournament, we had a lot of fun. We also had an opportunity to see the north american division champion, who ended up obliterating our build. This coming semester, we will improve upon the design and compete again.</p>
+        
+        
+    <img src="Battle_Butt_Invisible_Top.png" alt="" width=95% height=95%>
+    
+    <H3>Competition Videos</H3>    
+    
+    <video width=40% controls>
+        <source src="One_Pound_Bot_Video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        
+    </center>
+        
+        
+    </div>
+
+    <button class="button button1" onclick=window.location.href="index.html">Homepage</button>
+
+
+
+</body>
+
+</html>

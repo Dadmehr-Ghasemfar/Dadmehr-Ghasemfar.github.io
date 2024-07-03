@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+    <title style="fond-size:24px;">Two Legged Walking Robot</title>
+
+    <style>
+        
+        h1 {
+            font-size: 1.5em;
+        }
+        
+        #canvas1 {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+        
+        #title1 {
+            color: white;
+        }
+
+        #subtitle1 {
+            position: absolute;
+            z-index: 1;
+            color: black;
+            top: 0%;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+        }
+        
+        #paragraph1 {
+            position: absolute;
+            z-index: 1;
+            color: azure;
+            top: 20%;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+
+        }
+
+
+        .button {
+            position: absolute;
+            z-index: 1;
+            background-color: lightgray;
+            width: 15%;
+            height: 10%;
+            color: black;
+            border: 2px solid 33d7ff;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 175%;
+            font-family: "Times New Roman", Times, serif;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        
+        div {
+            position: absolute;
+            top: 27%;
+            left: 10%;
+            background-color: lightgrey;
+            width: 70%;
+            z-index: 1;
+            border: 6px solid grey;
+            padding: 55px;
+            margin: 5px;
+        }
+
+        .button1 {
+            top: calc(13% + 10px);
+        }
+
+
+        .button:hover {
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color:black;">
+
+    <canvas id="canvas1">
+        <script src="sketch.js"></script>
+    </canvas>
+
+    <H1 id="title1">Bucko - The Two Legged Walking Robot</H1>
+    
+    <div ID="boxed">
+    
+    <center>
+    
+    <H2 id="subtitle1">Bucko - The Bipedal Robot</H2>
+        
+    <img src="chillin_bucko.png" width=55%>
+    
+    <H3>Video Montage Summary</H3>
+        
+    <iframe width=95% src="https://www.youtube.com/embed/gcRyeCMZLnI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    
+        
+    <H3>Sketching and Brainstorming</H3>
+        
+    <p> Eight LX16A motors were made available to me and my partner and close friend (<a href="https://sites.google.com/view/me-442-final-project-alejandro/bock-oclock/">Alejandro Assael</a>). We had many different ideas, but decided to stick with a two-legged penguin like design. The name "Bucko O'Clock" instantly stuck. The nicknames "Bocko", "Toaster", "Buckmeister", and "Bucky" are all acceptable.
+    </p>
+        
+    <img src="brainstorming_bucko.png" alt="" width=95% height=95%>
+        
+    <H3>Initial CAD</H3>
+        
+    <p> For a rough CAD model, we wanted a design with four degrees of freedom in each leg - three in the same axis (hip, knee, ankle) and one orthogonal (hip). At the time of this idea, we thought this would mean we could achieve a quasi-static gait, adjusting the lateral movement of Bucko's hips until the center of mass is within the footprint. The femur and the fibula are just the same part, helping with the modularity of the printing and assembly process.
+    </p>s
+        
+    <img src="initialCAD_bucko.png" alt="" width=95% height=95%>
+        
+    <H3>Detailed CAD</H3>
+        
+    <p> For the detailed CAD we spontaneously adopted a new look for Bucko - Iron Man! This color scheme added more complexity to the somewhat minimalist design. We also added all of the screws, ensuring that the motor mounts, PCB mounts, and air vents are in the correct spots. An error of just 0.5 mm in the location of the motor screw mount would be unreliable and insecure. With time for printing quickly approaching, we skipped CAD for the wires, but we just so lucked out and experienced very few wiring problems during the build.
+    </p>
+        
+    <img src="CAD1_bucko.png" alt="" width=95% height=95%>
+        
+    <img src="CAD2_bucko.png" alt="" width=95% height=95%>
+        
+    <H3>Assembly</H3>
+        
+    <p> Assembly was a nightmare. This included: hours of filing away at 15% infill PLA until the clearance of the part was just right, several nearly stripped nuts and one that never came out (they say its still holding the knee together), some solder-iron surgery, and days of printer time on reprints. After several iterations on the CAD and assembly process, a viable solution was found. He is groovy and ready to move!
+    </p>
+        
+    <img src="assembly1_bucko.png" alt="" width=95% height=95%>
+    <img src="assembly2_bucko.png" alt="" width=95% height=95%>
+        
+    <H3>Painting and Wireless Connection</H3>
+        
+    <p> As we neared the end of the design deadline, we realized we were very behind. The python library we wrote to control the motors with the help of a commonly available GitHub LX16A Control Library was rudimentary. Commands were still being sent over physical wire. Worst of all, he was all the same color. After many all nighters, we managed to A) interpolate smoothly between keyframes so as to complete certain movements, B) connect the Raspberry Pi to the computer/remote wirelessly through LAN and its IP-adress, and C) sand down all the parts and paint them in yellow and red.
+
+    </p>
+        
+    <img src="assembly3_bucko.png" alt="" width=95% height=95%>
+        
+     <H3>Bucko's Great Dance and Sprint and Fall Combo</H3>
+        
+   <video width=40% controls>
+        <source src="Bucko_Dance.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        
+    <video width=20% controls>
+        <source src="Bucko_Run.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        
+    <video width=30% controls>
+        <source src="Bucko_Fail.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        
+        
+    </center>
+    
+        
+        
+    </div>
+    
+    
+
+
+    <button class="button button1" onclick=window.location.href="index.html">Homepage</button>
+
+
+
+</body>
+
+</html>
