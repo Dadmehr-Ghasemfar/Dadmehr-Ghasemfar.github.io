@@ -12,22 +12,54 @@
     <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
 
     <style>
-
         #titleDiv {
             margin-left: auto;
             margin-right: auto;
             width: 90%;
+            position: absolute;
+            top: 5%;
+            left: 0;
+            right: 0;
+            text-align: center;
         }
 
         #mainTitle {
             font-size: 10vw;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 15%;
-            margin-top: 5%;
             border: 8px solid #8C5D23;
             border-radius: 32px;
             background: #D9B384;
+        }
+
+        #projectsButtons {
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            font-size: 2vw;
+            border: 8px solid #024959;
+            border-radius: 32px;
+            background: #025159;
+            position: absolute;
+            top: 20%;
+            overflow: hidden;
+
+            text-align: center;
+        }
+
+        .column {
+            float: left;
+            width: 30.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
         }
 
         button {
@@ -40,7 +72,7 @@
             text-align: center;
             border: 8px solid #025373;
             color: #024959;
-            margin: 5% auto;
+            margin: 16px auto;
             display: block;
             width: 80%;
         }
@@ -52,9 +84,16 @@
             font-size: 9vw;
             text-align: center;
             border: 8px solid #8C5D23;
-            margin: 5% auto;
+            margin: 16px auto;
             color: black;
             display: block;
+        }
+
+        #buttonsDiv {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 80%;
         }
 
         @media only screen and (min-width: 600px) {
@@ -63,6 +102,11 @@
                 margin-left: auto;
                 margin-right: auto;
                 width: 50%;
+                position: absolute;
+                top: 2%;
+                left: 0;
+                right: 0;
+                text-align: center;
             }
 
             #mainTitle {
@@ -73,29 +117,62 @@
                 margin-top: 5%;
             }
 
+            #projectsButtons {
+                left: 0;
+                right: 0;
+                position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                width: 70%;
+                font-size: 2vw;
+                border: 8px solid #024959;
+                border-radius: 32px;
+                background: #025159;
+                position: absolute;
+                top: 30%;
+                overflow: hidden;
+
+                text-align: center;
+            }
+
+            .column {
+                float: left;
+                width: 32%;
+                padding: 5px;
+            }
+
             button {
                 border-radius: 32px;
                 background-color: #6BB0BF;
                 padding: 14px 14px;
-                font-size: 4vw;
+                font-size: 3vw;
                 font-weight: bold;
                 text-align: center;
+                left: 0;
+                right: 0;
                 border: 8px solid #025373;
                 margin: 5% auto;
                 display: block;
-                width: 65%;
             }
+
 
             button:hover {
                 border-radius: 32px;
                 background-color: #D9B384;
                 padding: 14px 14px;
-                font-size: 5vw;
+                font-size: 4vw;
                 text-align: center;
                 border: 8px solid #8C5D23;
                 margin: 5% auto;
                 color: black;
                 display: block;
+
+            }
+
+            #buttonsDiv {
+                width: 30%;
+                top: 100%;
+                left: 35%;
             }
         }
 
@@ -110,13 +187,20 @@
     </canvas>
 
     <div id="titleDiv">
-        <h1 id="mainTitle">Dadmehr Daniel Ghasemfar</h1>
+        <h1 id="mainTitle">STEM Projects</h1>
     </div>
 
+    <div id="projectsButtons">
+
+        <button id="aboutMe"> Bucko the Bipedal Robot </button>
+        <button id="myWorks"> FEA Wave Propogation </button>
+        <button id="customBackground"> Simple CFD </button>
+
+    </div>
+
+
     <div id="buttonsDiv">
-        <button id="aboutMe" onclick=window.location.href="aboutMe.html"> About Me </button>
-        <button id="myWorks" onclick=window.location.href="projectsPage.html"> STEM Projects </button>
-        <button id="customBackground"> Interactive Backgrounds </button>
+        <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
     </div>
 
 </body>

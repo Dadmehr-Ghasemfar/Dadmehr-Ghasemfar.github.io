@@ -2,142 +2,201 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
 
-    <title style="fond-size:24px;">About Me</title>
+
+    <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
 
     <style>
-        h1 {
-            font-size: 1.5em;
-        }
-
-        #canvas1 {
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-        }
-
-        #title1 {
-            color: white;
-        }
-
-        #subtitle1 {
-            position: absolute;
-            color: black;
-            top: 0%;
+        #titleDiv {
             margin-left: auto;
             margin-right: auto;
+            width: 90%;
+            position: absolute;
+            top: 5%;
             left: 0;
             right: 0;
             text-align: center;
-
         }
 
-        p {
-            padding: 5px;
-        }
-
-        .button {
-            position: absolute;
-            z-index: 1;
-            background-color: lightgray;
-            width: 15%;
-            height: 10%;
-            color: black;
-            border: 2px solid 33d7ff;
-            border-radius: 8px;
+        #mainTitle {
+            font-size: 10vw;
             font-weight: bold;
             text-align: center;
-            font-size: 175%;
-            font-family: "Times New Roman", Times, serif;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-            -moz-transform: translateX(-50%);
-            transform: translateX(-50%);
+            border: 8px solid #8C5D23;
+            border-radius: 32px;
+            background: #D9B384;
         }
 
-        .div1 {
-            position: absolute;
-            top: 27%;
-            left: 10%;
-            background-color: lightgrey;
-            width: 70%;
-            z-index: 1;
-            border: 6px solid grey;
-            padding: 45px;
-            margin: 5px;
+        #aboutMeDiv {
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            border: 8px solid #8C5D23;
+            border-radius: 32px;
+            background: #D9B384;
+
+            text-align: center;
         }
 
-        .imageRow1 {
-            float: center;
-            width: 80%;
-            padding: 5px;
-            justify-content: center;
-        }
-
-        .imgContainer {
+        .column {
             float: left;
-            margin: 5px
+            width: 30.33%;
+            padding: 5px;
         }
 
-        .button1 {
-            top: calc(13% + 10px);
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
         }
 
-        .button:hover {
-            background-color: black;
-            color: white;
+        button {
+            transition-duration: 0.4s;
+            border-radius: 32px;
+            background-color: #6BB0BF;
+            padding: 14px 14px;
+            font-size: 8vw;
+            font-weight: bold;
+            text-align: center;
+            border: 8px solid #025373;
+            color: #024959;
+            margin: 16px auto;
+            display: block;
+            width: 80%;
+        }
+
+        button:hover {
+            border-radius: 32px;
+            background-color: #D9B384;
+            padding: 14px 14px;
+            font-size: 9vw;
+            text-align: center;
+            border: 8px solid #8C5D23;
+            margin: 16px auto;
+            color: black;
+            display: block;
+        }
+
+        @media only screen and (min-width: 600px) {
+
+            #titleDiv {
+                margin-left: auto;
+                margin-right: auto;
+                width: 30%;
+                position: absolute;
+                top: 2%;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+
+            #mainTitle {
+                font-size: 5vw;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 5%;
+                margin-top: 5%;
+            }
+
+            #aboutMeDiv {
+                left: 0;
+                right: 0;
+                position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+                font-size: 2vw;
+                border: 8px solid #8C5D23;
+                border-radius: 32px;
+                background: #D9B384;
+                position: absolute;
+                top: 30%;
+                overflow: hidden;
+
+                text-align: center;
+            }
+
+            .column {
+                float: left;
+                width: 32%;
+                padding: 5px;
+            }
+
+            button {
+                border-radius: 32px;
+                background-color: #6BB0BF;
+                padding: 14px 14px;
+                font-size: 4vw;
+                font-weight: bold;
+                text-align: center;
+                left: 0;
+                right: 0;
+                position: absolute;
+                top: 250%;
+                border: 8px solid #025373;
+                margin: 5% auto;
+                display: block;
+            }
+
+            button:hover {
+                border-radius: 32px;
+                background-color: #D9B384;
+                padding: 14px 14px;
+                font-size: 5vw;
+                text-align: center;
+                border: 8px solid #8C5D23;
+                margin: 5% auto;
+                color: black;
+                display: block;
+                position: absolute;
+                top: 250%;
+            }
         }
 
     </style>
 
 </head>
 
-<body style="background-color:black;">
+<body>
 
-    <canvas id="canvas1">
-        <script src="sketch.js"></script>
+    <canvas id="backgroundSketch">
+        <script src="sketchMain.js"> </script>
     </canvas>
 
-    <H1 id="title1">About Me</H1>
-
-    <div class="div1" ID="boxed">
-
-        <center>
-
-            <H2 id="subtitle1">Dadmehr Daniel Ghasemfar</H2>
-
-            <p> &emsp; I am a student of Mechanical Engineering at Duke University with a minor in Mathematics and Psychology and a focus in Aerospace Engineering. I am currently set to graduate in 2024 and am hoping to pursue a graduate degree. I have worked with the Duke General Robotics Lab for the last two years, doing research in sound simulation and AI. In my field, I am particularly interested in control systems, modelling, robotics, and mechatronics. As you can see from this custom website, I also enjoy working at the intersection of STEM and visual art.
-            </p>
-
-
-            <div class="imageRow1">
-                <div class="imgContainer">
-                    <img src="Dadmehr1.JPG" height="150" width="150" />
-                </div>
-                <div class="imgContainer">
-                    <img src="Dadmehr2.JPG" height="150" width="150" />
-                </div>
-                <div class="imgContainer">
-                    <img src="Dadmehr3.JPG" height="150" width="150" />
-                </div>
-                <div class="imgContainer">
-                    <img src="Dadmehr4.JPG" height="150" width="150" />
-                </div>
-            </div>
-
-            <p style="clear:both;"> <br> In my free time I enjoy running, calisthenics, cooking and grilling, and occasionaly techno/EDM. I was born in Iran, moved to Prague, Czech Republic from the ages of 7 to 14, moved to the Bay Area, California from 15 to 19, and have been between DC and Durham, North Carolina ever since (Currently 21 years old). I am fluent in Farsi and speak a little Spanish.</p>
-
-        </center>
-
+    <div id="titleDiv">
+        <h1 id="mainTitle">About Me</h1>
     </div>
 
-    <button class="button button1" onclick=window.location.href="index.html" ;">Homepage</button>
+    <div id="aboutMeDiv">
 
+        <img id="mainPic" src="Dadmehr3.JPG" style="width:80%;padding:3%;border-radius:32px;margin-bottom:0px;padding-bottom: 0px">
 
+        <p style="padding:3%"> I am a student of Mechanical Engineering at Duke University with a minor in Mathematics and Psychology and a focus in Aerospace Engineering. I am currently set to graduate in 2024 and am hoping to pursue a graduate degree. I have worked with the Duke General Robotics Lab for the last two years, doing research in sound simulation and AI. In my field, I am particularly interested in control systems, modelling, robotics, and mechatronics. As you can see from this custom website, I also enjoy working at the intersection of STEM and visual art.
+        </p>
+
+        <div class="row">
+            <div class="column">
+                <img src="Dadmehr1.JPG" style="width:100%;padding:3%;border-radius: 32px">
+            </div>
+            <div class="column">
+                <img src="Dadmehr4.JPG" style="width:100%;padding:3%;border-radius: 32px">
+            </div>
+            <div class="column">
+                <img src="Dadmehr2.JPG" style="width:100%;padding:3%;border-radius: 32px">
+            </div>
+        </div>
+
+    </div>
+    
+
+    <div id="buttonsDiv">
+        <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
+    </div>
 
 </body>
 
