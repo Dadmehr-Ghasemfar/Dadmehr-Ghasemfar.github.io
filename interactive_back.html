@@ -16,21 +16,45 @@
             margin-left: auto;
             margin-right: auto;
             width: 90%;
+            position: absolute;
+            top: 5%;
+            left: 0;
+            right: 0;
+            text-align: center;
         }
 
         #mainTitle {
             font-size: 10vw;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 15%;
-            margin-top: 5%;
             border: 8px solid #8C5D23;
             border-radius: 32px;
             background: #D9B384;
-            position: absolute;
-            top: 2%;
-            left: 5%;
-            right: 5%;
+        }
+
+        #aboutMeDiv {
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            border: 8px solid #8C5D23;
+            border-radius: 32px;
+            background: #D9B384;
+
+            text-align: center;
+        }
+
+        .column {
+            float: left;
+            width: 30.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+            left: 0;
+            right: 0;
         }
 
         button {
@@ -43,7 +67,7 @@
             text-align: center;
             border: 8px solid #025373;
             color: #024959;
-            margin: 5% auto;
+            margin: 16px auto;
             display: block;
             width: 80%;
         }
@@ -55,14 +79,9 @@
             font-size: 9vw;
             text-align: center;
             border: 8px solid #8C5D23;
-            margin: 5% auto;
+            margin: 16px auto;
             color: black;
             display: block;
-        }
-
-        #buttonsDiv {
-            position: absolute;
-            top: 20%;
         }
 
         @media only screen and (min-width: 600px) {
@@ -70,19 +89,52 @@
             #titleDiv {
                 margin-left: auto;
                 margin-right: auto;
-                width: 70%;
+                width: 95%;
+                position: absolute;
+                top: 0%;
+                left: 0;
+                right: 0;
+                text-align: center;
             }
 
             #mainTitle {
                 font-size: 5vw;
                 font-weight: bold;
                 text-align: center;
-                margin-bottom: 5%;
+                margin-bottom: 2%;
                 margin-top: 2%;
+            }
+
+            #aboutMeDiv {
+                left: 0;
+                right: 0;
                 position: absolute;
-                top: 2%;
-                left: 15%;
-                right: 15%;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+                font-size: 2vw;
+                border: 8px solid #8C5D23;
+                border-radius: 32px;
+                background: #D9B384;
+                position: absolute;
+                top: 30%;
+                overflow: hidden;
+
+                text-align: center;
+            }
+
+            .column {
+                float: left;
+                width: 30%;
+                padding: 5px;
+            }
+
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+                left: 0;
+                right: 0;
             }
 
             button {
@@ -92,6 +144,10 @@
                 font-size: 4vw;
                 font-weight: bold;
                 text-align: center;
+                left: 0;
+                right: 0;
+                position: absolute;
+                top: 250%;
                 border: 8px solid #025373;
                 margin: 5% auto;
                 display: block;
@@ -101,19 +157,29 @@
                 border-radius: 32px;
                 background-color: #D9B384;
                 padding: 14px 14px;
-                font-size: 4.5vw;
+                font-size: 5vw;
                 text-align: center;
                 border: 8px solid #8C5D23;
                 margin: 5% auto;
                 color: black;
                 display: block;
+                position: absolute;
+                top: 250%;
             }
 
             #buttonsDiv {
                 position: absolute;
-                top: 25%;
-                left: 12%;
-                right: 12%;
+                top: 20%;
+                width: 40%;
+                left: 30%;
+                right 30%;
+            }
+
+            #backgroundSketch {
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                right 0%;
             }
         }
 
@@ -124,17 +190,18 @@
 <body>
 
     <canvas id="backgroundSketch">
-        <script src="sketchMain.js"> </script>
+        <script src="sketch.js"> </script>
     </canvas>
 
     <div id="titleDiv">
-        <h1 id="mainTitle">Dadmehr Daniel Ghasemfar</h1>
+        <h1 id="mainTitle">Interactive Backgrounds - Desktop Only </h1>
     </div>
 
+
+
+
     <div id="buttonsDiv">
-        <button id="aboutMe" onclick=window.location.href="aboutMe.html"> About Me </button>
-        <button id="myWorks" onclick=window.location.href="projectsPage.html"> STEM Projects </button>
-        <button id="customBackground" onclick=window.location.href="interactive_back.html"> Interactive Backgrounds </button>
+        <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
     </div>
 
 </body>

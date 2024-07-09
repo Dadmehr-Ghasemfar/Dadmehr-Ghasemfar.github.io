@@ -1,6 +1,9 @@
 var backID;
 var runOnce = false;
 var name;
+backR = 255;
+backG = 255;
+backB = 255;
 
 let img0, img1, img2, img3, img4, img5, img6, img7, img8, img9;
 
@@ -15,12 +18,13 @@ function preload() {
     img7 = loadImage('img7.jpg');
     img8 = loadImage('img8.jpg');
     img9 = loadImage('img9.jpg');
+    img10 = loadImage('img10.jpg');
 }
 
 function setup() {
     createCanvas(windowWidth, windowHeight * 1.5);
-    backID = floor(random(0, 9))
-    backID = 1.0;
+    backID = floor(random(0, 15))
+    //backID = 2.0;
     console.log("backID = " + backID);
 }
 
@@ -46,7 +50,7 @@ function draw() {
             back6();
             break;
         case 6.0:
-            back7();
+            back3();
             break;
         case 7.0:
             back8();
@@ -55,33 +59,34 @@ function draw() {
             back9();
             break;
         default:
-            //background(255);
+            back3();
+            break;
     }
-    fill(0);
-    stroke(255);
+    fill(backR, backG, backB);
+    stroke(0);
     strokeWeight(2);
-    rect(width - 165, 15, 135, 45, 20);
+    rect(width * 0.815, height * 0.185, width * 0.12, height * 0.07, 20);
 
     textAlign(CENTER);
     noStroke();
-    fill(255);
-    textSize(24);
-    text(name, width - 195, 20, 200, 60)
-    textSize(10);
-    text("by Dadmehr Ghasemfar", width - 195, 45, 200, 50);
     fill(0);
+    textSize(map(width * 0.1, 0, 160, 14, 30));
+    text(name, width * 0.8, height * 0.195, width * 0.15, height * 0.07)
+    textSize(map(width * 0.1, 0, 160, 6, 14));
+    text("by Dadmehr Ghasemfar", width * 0.8, height * 0.23, width * 0.15, height * 0.07);
+    fill(backR, backG, backB);
     strokeWeight(2);
-    stroke(255);
-    rect(5, 10, 400, 50, 10);
+    stroke(0);
+    rect(width * 0.05, height * 0.17, width * 0.24, height * 0.1, 10);
     noStroke();
-    fill(255);
-    textSize(15);
+    fill(0);
+    textSize(map(width * 0.1, 0, 160, 8, 20));
     textStyle(ITALIC);
-    text("Refresh The Page For Funky Interactive Backgrounds! All custom JavaScript by yours trully", 5, 20, 400, 50);
+    text("Refresh The Page For Funky Interactive Backgrounds! All custom JavaScript by yours trully", width * 0.05, height * 0.18, width * 0.24, height * 0.1);
     textStyle(NORMAL);
 
     strokeWeight(5);
-    stroke(255);
+    stroke(0);
     line(0, 0, width, 0);
     strokeWeight(2);
 }
@@ -91,7 +96,7 @@ function windowResized() {
 }
 
 function back1() {
-    background(0);
+    background(backR, backG, backB);
     name = "Circles";
     var smallR = 40;
     var cols = floor(windowWidth / smallR);
@@ -133,10 +138,10 @@ function back1() {
 }
 
 function back2() {
-    background(0);
+    background(backR, backG, backB);
     numPoints = 30;
     maxSpeed = random(0.1, 0.75);
-    radiusOfVision = random(200 * 400, 200 * 600);
+    radiusOfVision = random(width * 6, width * 16);
     name = "Satellites";
 
     if (runOnce == false) {
@@ -211,14 +216,15 @@ function back2() {
 }
 
 function back3() {
-    numPhotos = 10;
+    numPhotos = 11;
     numCircles = 125;
-    radius = 200;
+    radius = random(width * 0.05, width * 0.1);
     name = "Focus";
 
     if (runOnce == false) {
-        background(0);
+        background(backR, backG, backB);
         randVar = floor(random(0, numPhotos))
+        //randVar = 10.0;
         console.log("Image ID = " + randVar);
         if (randVar == 0.0) {
             img = img0;
@@ -240,19 +246,25 @@ function back3() {
             img = img8;
         } else if (randVar == 9.0) {
             img = img9;
+        } else if (randVar == 10.0) {
+            img = img10;
         } else {
-            img = img0;
+            img = img2;
         }
+        
+        img.resize(width, img.height*width/img.width); 
+        //image(img, (0)/2, (0)/2);
         runOnce = true;
     } else {
-        //image(img, (windowWidth - img.width) / 2, (windowHeight - img.height) / 2);
+
+        
         noStroke();
         for (i = 0; i <= numCircles; i++) {
             distance = random(0, radius);
             angle = random(0, 6.3);
             xCoor = mouseX + distance * cos(angle);
             yCoor = mouseY + distance * sin(angle);
-            let c = img.get(xCoor - (windowWidth - img.width) / 2, yCoor - (windowHeight - img.height) / 2);
+            let c = img.get(xCoor, yCoor);
             fill(c[0], c[1], c[2], 50);
             ellipse(xCoor, yCoor, random(5, 10));
         }
@@ -260,7 +272,7 @@ function back3() {
 }
 
 function back4() {
-    background(0);
+    background(backR, backG, backB);
 
     boxWidth = 20;
     boxHeight = 20;
@@ -305,7 +317,7 @@ function back5() {
     strokeWeight(1);
 
     if (runOnce == false) {
-        background(0);
+        background(backR, backG, backB);
 
         R1 = random(0, 255);
         G1 = random(0, 255);
@@ -350,7 +362,7 @@ function back5() {
 }
 
 function back6() {
-    background(0);
+    background(backR, backG, backB);
     numPoints = 60;
     name = "Memory";
 
@@ -399,7 +411,7 @@ function back6() {
 }
 
 function back7() {
-    background(0);
+    background(backR, backG, backB);
     name = "Polar";
 
     if (runOnce == false) {
@@ -409,7 +421,7 @@ function back7() {
 
         runOnce = true;
     } else {
-        background(0);
+        background(backR, backG, backB);
         a = map(mouseX, 0, windowWidth, 0, 2);
         b = map(mouseY, 0, windowHeight, 0, 2);
         console.log("a" + a)
@@ -467,7 +479,7 @@ function back7() {
 }
 
 function back8() {
-    background(0);
+    background(backR, backG, backB);
     numPoints = 60;
     name = "Woosh";
 
@@ -546,7 +558,7 @@ function back8() {
 }
 
 function back9() {
-    background(0);
+    background(backR, backG, backB);
     name = "Bubbles";
     ageLim = 400
 
