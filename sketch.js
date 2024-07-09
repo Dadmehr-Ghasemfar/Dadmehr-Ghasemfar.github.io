@@ -5,27 +5,20 @@ backR = 255;
 backG = 255;
 backB = 255;
 
-let img0, img1, img2, img3, img4, img5, img6, img7, img8, img9;
-
 function preload() {
-    img0 = loadImage('img0.jpg');
-    img1 = loadImage('img1.jpg');
-    img2 = loadImage('img2.jpg');
-    img3 = loadImage('img3.jpg');
-    img4 = loadImage('img4.jpg');
-    img5 = loadImage('img5.jpg');
-    img6 = loadImage('img6.jpg');
-    img7 = loadImage('img7.jpg');
-    img8 = loadImage('img8.jpg');
-    img9 = loadImage('img9.jpg');
-    img10 = loadImage('img10.jpg');
+    numPhotos = 11;
+    randVar = floor(random(0, numPhotos))
+    //randVar = 10.0;
+    console.log("Image ID = " + randVar);
+    imgLoad = loadImage('img' + randVar + '.jpg');
 }
 
 function setup() {
     createCanvas(windowWidth, windowHeight * 1.5);
     backID = floor(random(0, 15))
-    //backID = 2.0;
+    backID = 2.0;
     console.log("backID = " + backID);
+    runOnce = false;
 }
 
 function draw() {
@@ -216,55 +209,28 @@ function back2() {
 }
 
 function back3() {
-    numPhotos = 11;
     numCircles = 125;
     radius = random(width * 0.05, width * 0.1);
     name = "Focus";
 
     if (runOnce == false) {
         background(backR, backG, backB);
-        randVar = floor(random(0, numPhotos))
-        //randVar = 10.0;
-        console.log("Image ID = " + randVar);
-        if (randVar == 0.0) {
-            img = img0;
-        } else if (randVar == 1.0) {
-            img = img1;
-        } else if (randVar == 2.0) {
-            img = img2;
-        } else if (randVar == 3.0) {
-            img = img3;
-        } else if (randVar == 4.0) {
-            img = img4;
-        } else if (randVar == 5.0) {
-            img = img5;
-        } else if (randVar == 6.0) {
-            img = img6;
-        } else if (randVar == 7.0) {
-            img = img7;
-        } else if (randVar == 8.0) {
-            img = img8;
-        } else if (randVar == 9.0) {
-            img = img9;
-        } else if (randVar == 10.0) {
-            img = img10;
-        } else {
-            img = img2;
-        }
-        
-        img.resize(width, img.height*width/img.width); 
-        //image(img, (0)/2, (0)/2);
+
+        img = imgLoad;
+        img.resize(width, img.height * width / img.width);
+        //image(img, 0, 0);
         runOnce = true;
+
     } else {
 
-        
+
         noStroke();
         for (i = 0; i <= numCircles; i++) {
             distance = random(0, radius);
             angle = random(0, 6.3);
             xCoor = mouseX + distance * cos(angle);
             yCoor = mouseY + distance * sin(angle);
-            let c = img.get(xCoor, yCoor);
+            c = img.get(xCoor, yCoor);
             fill(c[0], c[1], c[2], 50);
             ellipse(xCoor, yCoor, random(5, 10));
         }
