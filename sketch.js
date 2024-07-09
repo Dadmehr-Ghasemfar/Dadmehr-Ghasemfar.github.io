@@ -16,7 +16,7 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight * 1.5);
     backID = floor(random(0, 15))
-    backID = 2.0;
+    //backID = 2.0;
     console.log("backID = " + backID);
     runOnce = false;
 }
