@@ -1,7 +1,7 @@
 var canvas;
 
 function setup() {
-    canvas = createCanvas(windowWidth, windowHeight*3);
+    canvas = createCanvas(windowWidth, windowHeight*5);
     canvas.position(0, 0);
     canvas.style('z-index', '-1')
     R1 = 150;
@@ -10,7 +10,7 @@ function setup() {
     color_dev = 30;
 
     points = new Array();
-    numPoints = 20;
+    numPoints = 30;
     for (i = 0; i < numPoints; i++) {
         randPoint = {
             x: random(0, windowWidth),
@@ -41,7 +41,7 @@ function draw() {
         if (points[i].t > points[i].tMax) {
             randPoint = {
                 x: random(0, windowWidth),
-                y: random(0, windowHeight*2),
+                y: random(0, windowHeight*5),
                 r: 0,
                 rMax: random(50, 400),
                 rV: random(1, 4),
@@ -60,5 +60,5 @@ function draw() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight*3);
+    resizeCanvas(windowWidth, windowHeight*5);
 }
