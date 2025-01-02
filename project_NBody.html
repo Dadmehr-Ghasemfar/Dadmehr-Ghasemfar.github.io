@@ -17,7 +17,7 @@
             margin-right: auto;
             width: 90%;
             position: absolute;
-            top: 5%;
+            top: 2%;
             left: 0;
             right: 0;
             text-align: center;
@@ -30,24 +30,6 @@
             border: 8px solid #8C5D23;
             border-radius: 32px;
             background: #D9B384;
-        }
-
-        #projectsButtons {
-            left: 0;
-            right: 0;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            width: 80%;
-            font-size: 2vw;
-            border: 8px solid #024959;
-            border-radius: 32px;
-            background: #025159;
-            position: absolute;
-            top: 20%;
-            overflow: hidden;
-
-            text-align: center;
         }
 
         .column {
@@ -93,7 +75,16 @@
             position: absolute;
             left: 0;
             right: 0;
-            top: 125%;
+            top: 120%;
+        }
+
+        #pdfDoc {
+            position: absolute;
+            width: 90%;
+            height: 70%;
+            left: 5%;
+            right: 5%;
+            top: 25%;
         }
 
         @media only screen and (min-width: 600px) {
@@ -101,7 +92,7 @@
             #titleDiv {
                 margin-left: auto;
                 margin-right: auto;
-                width: 50%;
+                width: 70%;
                 position: absolute;
                 top: 2%;
                 left: 0;
@@ -115,24 +106,6 @@
                 text-align: center;
                 margin-bottom: 2%;
                 margin-top: 2%;
-            }
-
-            #projectsButtons {
-                left: 0;
-                right: 0;
-                position: absolute;
-                margin-left: auto;
-                margin-right: auto;
-                width: 70%;
-                font-size: 2vw;
-                border: 8px solid #024959;
-                border-radius: 32px;
-                background: #025159;
-                position: absolute;
-                top: 30%;
-                overflow: hidden;
-
-                text-align: center;
             }
 
             .column {
@@ -171,8 +144,17 @@
 
             #buttonsDiv {
                 width: 30%;
-                top: 195%;
+                top: 170%;
                 left: 35%;
+            }
+
+            #pdfDoc {
+                position: absolute;
+                width: 90%;
+                height: 110%;
+                left: 5%;
+                right: 5%;
+                top: 25%;
             }
         }
 
@@ -187,20 +169,17 @@
     </canvas>
 
     <div id="titleDiv">
-        <h1 id="mainTitle">STEM Projects</h1>
+        <h1 id="mainTitle">N-Body Simulation</h1>
     </div>
 
-    <div id="projectsButtons">
+    <div id="pdfDoc">
 
-        <button id="projectFEA" onclick=window.location.href="project_FEA.html"> FEA Wave Propogation </button>
-        <button id="aboutMe" onclick=window.location.href="project_Bucko.html"> Bucko the Bipedal Robot </button>
-        <button id="customBackground" onclick=window.location.href="project_simpleCFD.html"> Simple CFD </button>
-        <button id="customBackground" onclick=window.location.href="project_NBody.html"> N-Body Simulation </button>
-        <button id="customBackground" onclick=window.location.href="project_MarsProp.html"> Electro-Resistive Propulsion </button>
-        <button id="customBackground" onclick=window.location.href="project_TVC.html"> Thrust Vector Control </button>
+
+        <iframe src="https://drive.google.com/file/d/1MKc9QCvq1X1nJoZFRg-H5-1mQx7elLzX/preview#view=FitH" width="100%" height="130%"></iframe>
+
+
 
     </div>
-
 
     <div id="buttonsDiv">
         <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
