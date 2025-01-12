@@ -9,111 +9,76 @@
     <meta charset="utf-8" />
 
 
-    <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
+    <title style="fond-size:24px;">Dadmehr Daniel Ghasemfar - Portfolio</title>
 
     <style>
-        #titleDiv {
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%;
-        }
-
         #mainTitle {
-            font-size: 10vw;
+            font-size: 370%;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 15%;
-            margin-top: 5%;
-            border: 8px solid #8C5D23;
-            border-radius: 32px;
-            background: #D9B384;
+            border: 5px solid #000000;
+            border-radius: 0px;
+            background: #FFFFFF;
             position: absolute;
-            top: 2%;
+            top: 3%;
             left: 5%;
             right: 5%;
         }
 
         button {
             transition-duration: 0.4s;
-            border-radius: 32px;
-            background-color: #6BB0BF;
-            padding: 14px 14px;
-            font-size: 8vw;
-            font-weight: bold;
+            background-color: #FFFFFF;
+            font-size: 270%;
+            width: 100%;
             text-align: center;
-            border: 8px solid #025373;
+            border: 5px solid #025373;
             color: #024959;
-            margin: 5% auto;
+            margin-bottom: 5%;
+            margin-top: 5%;
             display: block;
-            width: 80%;
+            border-radius: 0px;
         }
 
         button:hover {
-            border-radius: 32px;
-            background-color: #D9B384;
-            padding: 14px 14px;
-            font-size: 9vw;
-            text-align: center;
-            border: 8px solid #8C5D23;
-            margin: 5% auto;
-            color: black;
-            display: block;
+            background-color: #F2D785;
+            font-size: 270%;
+            border: 5px solid #6E4900;
+            border-radius: 0px;
+            color: #6E4900;
         }
 
         #buttonsDiv {
             position: absolute;
-            top: 20%;
+            padding-top: 25%;
+            width: 80%;
+            left: 10%;
         }
 
         @media only screen and (min-width: 600px) {
 
-            #titleDiv {
-                margin-left: auto;
-                margin-right: auto;
-                width: 70%;
-            }
-
             #mainTitle {
-                font-size: 5vw;
-                font-weight: bold;
-                text-align: center;
-                margin-bottom: 5%;
-                margin-top: 2%;
-                position: absolute;
-                top: 2%;
-                left: 15%;
-                right: 15%;
+                font-size: 8vw;
+                top: 0%;
+                width: 80%;
+                left: 10%;
             }
 
             button {
-                border-radius: 32px;
-                background-color: #6BB0BF;
-                padding: 14px 14px;
-                font-size: 4vw;
-                font-weight: bold;
-                text-align: center;
-                border: 8px solid #025373;
-                margin: 5% auto;
-                display: block;
+                width: auto;
+                margin-bottom: 3%;
+                margin-top: 3%;
+                font-size: 6vw;
             }
 
             button:hover {
-                border-radius: 32px;
-                background-color: #D9B384;
-                padding: 14px 14px;
-                font-size: 4.5vw;
-                text-align: center;
-                border: 8px solid #8C5D23;
-                margin: 5% auto;
-                color: black;
-                display: block;
+                font-size: 6vw;
             }
 
             #buttonsDiv {
                 position: absolute;
-                top: 25%;
-                left: 12%;
-                right: 12%;
+                padding-top: 5%;
+                width: 80%;
+                left: 10%;
             }
         }
 
@@ -124,18 +89,18 @@
 <body>
 
     <canvas id="backgroundSketch">
-        <script src="sketchMain.js"> </script>
+        <script src="background.js"> </script>
     </canvas>
 
     <div id="titleDiv">
-        <h1 id="mainTitle">Dadmehr Daniel Ghasemfar</h1>
+        <h1 id="mainTitle">Dadmehr Ghasemfar</h1>
     </div>
 
     <div id="buttonsDiv">
         <button id="aboutMe" onclick=window.location.href="aboutMe.html"> About Me </button>
-        <button id="myWorks" onclick=window.location.href="projectsPage.html"> STEM Projects </button>
+        <button id="myWorks" onclick=window.location.href="projectsPage.html"> Projects </button>
         <button id="drone" onclick=window.location.href="droneShots.html"> Drone Shots </button>
-        <button id="customBackground" onclick=window.location.href="interactive_back.html"> Interactive Backgrounds </button>
+        <button id="customBackground" onclick=window.location.href="interactive_back.html"> Artsy Backgrounds </button>
     </div>
 
 </body>

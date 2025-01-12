@@ -12,42 +12,51 @@
     <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
 
     <style>
-        #titleDiv {
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%;
+        #allContent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: absolute;
-            top: 5%;
+            width: 100%;
             left: 0;
-            right: 0;
-            text-align: center;
+            top: 0;
         }
 
         #mainTitle {
             font-size: 10vw;
             font-weight: bold;
             text-align: center;
-            border: 8px solid #8C5D23;
-            border-radius: 32px;
-            background: #D9B384;
+            border: 5px solid #000000;
+            background: #FFFFFF;
+            padding: 5px;
+            margin-top: 15%;
+            left: 15%;
+            right: 15%;
         }
 
         #projectsButtons {
-            left: 0;
-            right: 0;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            width: 80%;
-            font-size: 2vw;
-            border: 8px solid #024959;
-            border-radius: 32px;
-            background: #025159;
-            position: absolute;
-            top: 20%;
-            overflow: hidden;
+            width: 70%;
+            left: 15%;
+        }
 
+        button {
+            transition-duration: 0.4s;
+            background-color: #FFFFFF;
+            font-size: 270%;
             text-align: center;
+            border: 5px solid #025373;
+            color: #024959;
+            width: 100%;
+            margin-bottom: 5%;
+            margin-top: 5%;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #F2D785;
+            font-size: 270%;
+            border: 5px solid #6E4900;
+            color: #6E4900;
         }
 
         .column {
@@ -62,77 +71,38 @@
             display: table;
         }
 
-        button {
-            transition-duration: 0.4s;
-            border-radius: 32px;
-            background-color: #6BB0BF;
-            padding: 14px 14px;
+        #homeButton {
+            border: 5px solid #000000;
+            color: #000000;
             font-size: 8vw;
-            font-weight: bold;
-            text-align: center;
-            border: 8px solid #025373;
-            color: #024959;
-            margin: 16px auto;
-            display: block;
-            width: 90%;
-        }
-
-        button:hover {
-            border-radius: 32px;
-            background-color: #D9B384;
-            padding: 14px 14px;
-            font-size: 9vw;
-            text-align: center;
-            border: 8px solid #8C5D23;
-            margin: 16px auto;
-            color: black;
-            display: block;
-        }
-
-        #buttonsDiv {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 125%;
+            margin-top: 5%;
+            width: 60%;
         }
 
         @media only screen and (min-width: 600px) {
 
-            #titleDiv {
-                margin-left: auto;
-                margin-right: auto;
-                width: 50%;
-                position: absolute;
-                top: 2%;
-                left: 0;
-                right: 0;
-                text-align: center;
+            #allContent {
+                align-items: flex-start;
+                width: 80%;
+                left: 10%;
             }
 
             #mainTitle {
-                font-size: 5vw;
-                font-weight: bold;
-                text-align: center;
+                font-size: 7vw;
+                margin-top: 5%;
                 margin-bottom: 2%;
-                margin-top: 2%;
             }
 
-            #projectsButtons {
-                left: 0;
-                right: 0;
-                position: absolute;
-                margin-left: auto;
-                margin-right: auto;
-                width: 70%;
-                font-size: 2vw;
-                border: 8px solid #024959;
-                border-radius: 32px;
-                background: #025159;
-                position: absolute;
-                top: 30%;
-                overflow: hidden;
+            button {
+                width: auto;
+                margin-bottom: 4%;
+                margin-top: 4%;
+                font-size: 4vw;
+                text-align: left;
+            }
 
-                text-align: center;
+            button:hover {
+                font-size: 4vw;
             }
 
             .column {
@@ -141,39 +111,11 @@
                 padding: 5px;
             }
 
-            button {
-                border-radius: 32px;
-                background-color: #6BB0BF;
-                padding: 14px 14px;
+            #homeButton {
                 font-size: 3vw;
-                font-weight: bold;
-                text-align: center;
-                left: 0;
-                right: 0;
-                border: 8px solid #025373;
-                margin: 5% auto;
-                display: block;
+                width: auto;
             }
 
-
-            button:hover {
-                border-radius: 32px;
-                background-color: #D9B384;
-                padding: 14px 14px;
-                font-size: 4vw;
-                text-align: center;
-                border: 8px solid #8C5D23;
-                margin: 5% auto;
-                color: black;
-                display: block;
-
-            }
-
-            #buttonsDiv {
-                width: 30%;
-                top: 195%;
-                left: 35%;
-            }
         }
 
     </style>
@@ -183,26 +125,24 @@
 <body>
 
     <canvas id="backgroundSketch">
-        <script src="sketchMain.js"> </script>
+        <script src="background.js"> </script>
     </canvas>
 
-    <div id="titleDiv">
-        <h1 id="mainTitle">STEM Projects</h1>
-    </div>
+    <div id="allContent">
+        <h1 id="mainTitle">Engineering Projects</h1>
 
-    <div id="projectsButtons">
+        <div id="projectsButtons">
 
-        <button id="projectFEA" onclick=window.location.href="project_FEA.html"> FEA Wave Propogation </button>
-        <button id="aboutMe" onclick=window.location.href="project_Bucko.html"> Bucko the Bipedal Robot </button>
-        <button id="customBackground" onclick=window.location.href="project_simpleCFD.html"> Simple CFD </button>
-        <button id="customBackground" onclick=window.location.href="project_NBody.html"> N-Body Simulation </button>
-        <button id="customBackground" onclick=window.location.href="project_MarsProp.html"> Electro-Resistive Propulsion </button>
-        <button id="customBackground" onclick=window.location.href="project_TVC.html"> Thrust Vector Control </button>
+            <button id="projectFEA" onclick=window.location.href="project_FEA.html"> FEA Wave Propogation </button>
+            <button id="aboutMe" onclick=window.location.href="project_Bucko.html"> Bucko the Bipedal Robot </button>
+            <button id="customBackground" onclick=window.location.href="project_simpleCFD.html"> Simple CFD </button>
+            <button id="customBackground" onclick=window.location.href="project_NBody.html"> N-Body Simulation </button>
+            <button id="customBackground" onclick=window.location.href="project_MarsProp.html"> Electro-Resistive Propulsion </button>
+            <button id="customBackground" onclick=window.location.href="project_TVC.html"> Thrust Vector Control </button>
 
-    </div>
+        </div>
 
 
-    <div id="buttonsDiv">
         <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
     </div>
 

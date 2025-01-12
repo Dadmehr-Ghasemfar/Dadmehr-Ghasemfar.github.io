@@ -12,150 +12,77 @@
     <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
 
     <style>
-        #titleDiv {
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%;
+        #allContent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: absolute;
-            top: 2%;
-            left: 0;
-            right: 0;
-            text-align: center;
+            width: 100%;
+            top: 0%;
         }
 
         #mainTitle {
-            font-size: 10vw;
+            font-size: 7vw;
             font-weight: bold;
             text-align: center;
-            border: 8px solid #8C5D23;
-            border-radius: 32px;
-            background: #D9B384;
-        }
-
-        .column {
-            float: left;
-            width: 30.33%;
+            border: 3px solid #000000;
+            background: #FFFFFF;
             padding: 5px;
-        }
-
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
+            margin-top: 10%;
+            left: 10%;
+            right: 10%;
         }
 
         button {
             transition-duration: 0.4s;
-            border-radius: 32px;
-            background-color: #6BB0BF;
-            padding: 14px 14px;
-            font-size: 8vw;
-            font-weight: bold;
+            background-color: #FFFFFF;
+            font-size: 4vw;
+            width: 40%;
+            margin-bottom: 2%;
             text-align: center;
-            border: 8px solid #025373;
-            color: #024959;
-            margin: 16px auto;
+            border: 3px solid #000000;
+            color: #000000;
             display: block;
-            width: 90%;
         }
 
         button:hover {
-            border-radius: 32px;
-            background-color: #D9B384;
-            padding: 14px 14px;
-            font-size: 9vw;
-            text-align: center;
-            border: 8px solid #8C5D23;
-            margin: 16px auto;
-            color: black;
-            display: block;
-        }
-
-        #buttonsDiv {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 120%;
+            background-color: #F2D785;
+            border: 3px solid #6E4900;
+            color: #6E4900;
         }
 
         #pdfDoc {
-            position: absolute;
-            width: 90%;
-            height: 70%;
-            left: 5%;
-            right: 5%;
-            top: 25%;
+            width: 80%;
+            left: 10%;
+            height: 80vh;
+            margin-bottom: 5%;
+            border: 3px solid #000000;
         }
 
         @media only screen and (min-width: 600px) {
 
-            #titleDiv {
-                margin-left: auto;
-                margin-right: auto;
-                width: 70%;
-                position: absolute;
-                top: 2%;
-                left: 0;
-                right: 0;
-                text-align: center;
-            }
-
             #mainTitle {
-                font-size: 5vw;
-                font-weight: bold;
-                text-align: center;
-                margin-bottom: 2%;
-                margin-top: 2%;
-            }
-
-            .column {
-                float: left;
-                width: 32%;
-                padding: 5px;
+                font-size: 3vw;
+                margin-top: 1%;
+                margin-bottom: 1%;
             }
 
             button {
-                border-radius: 32px;
-                background-color: #6BB0BF;
-                padding: 14px 14px;
+                width: auto;
                 font-size: 3vw;
-                font-weight: bold;
-                text-align: center;
-                left: 0;
-                right: 0;
-                border: 8px solid #025373;
-                margin: 5% auto;
-                display: block;
+                text-align: left;
             }
-
 
             button:hover {
-                border-radius: 32px;
-                background-color: #D9B384;
-                padding: 14px 14px;
-                font-size: 4vw;
-                text-align: center;
-                border: 8px solid #8C5D23;
-                margin: 5% auto;
-                color: black;
-                display: block;
-
-            }
-
-            #buttonsDiv {
-                width: 30%;
-                top: 170%;
-                left: 35%;
+                font-size: 3vw;
             }
 
             #pdfDoc {
-                position: absolute;
-                width: 90%;
-                height: 110%;
-                left: 5%;
-                right: 5%;
-                top: 25%;
+                width: 70%;
+                left: 15%;
+                height: 170vh;
             }
+
         }
 
     </style>
@@ -165,26 +92,21 @@
 <body>
 
     <canvas id="backgroundSketch">
-        <script src="sketchMain.js"> </script>
+        <script src="background.js"> </script>
     </canvas>
 
-    <div id="titleDiv">
+    <div id="allContent">
         <h1 id="mainTitle">Wave Propagation Research</h1>
-    </div>
 
-    <div id="pdfDoc">
+        <div id="pdfDoc">
 
+            <iframe frameborder="0" class="pdf-viewer" allow="fullscreen" width="100%" height="100%" src="https://drive.google.com/file/d/1ovJ4KRBq9ixFYMB9YCJ6t8SNpz221nMb/preview#view=FitH"></iframe>
 
-        <iframe src="https://drive.google.com/file/d/1ovJ4KRBq9ixFYMB9YCJ6t8SNpz221nMb/preview#view=FitH" width="100%" height="130%"></iframe>
+        </div>
 
-
-
-    </div>
-
-    <div id="buttonsDiv">
         <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
+        <button id="homeButton" onclick=window.location.href="projectsPage.html"> Back </button>
     </div>
-
 </body>
 
 </html>
