@@ -1,0 +1,75 @@
+#allContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top: 0%;
+}
+
+#mainTitle {
+    font-size: 5vw;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid #000000;
+    background: #FFFFFF;
+    padding: 5px;
+    margin-top: 5%;
+}
+
+button {
+    transition-duration: 0.4s;
+    background-color: #FFFFFF;
+    font-size: 4vw;
+    width: 40%;
+    margin-bottom: 2%;
+    text-align: center;
+    border: 3px solid #000000;
+    color: #000000;
+    display: block;
+}
+
+button:hover {
+    background-color: #F2D785;
+    border: 3px solid #6E4900;
+    color: #6E4900;
+}
+
+#pdfDoc {
+    width: 80%;
+    left: 10%;
+    height: 80vh;
+    margin-bottom: 5%;
+    border: 3px solid #000000;
+}
+
+#backgroundSketch {
+    position: absolute;
+    top: 0;
+}
+
+@media only screen and (min-width: 600px) {
+
+    #mainTitle {
+        font-size: 3vw;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
+    button {
+        width: auto;
+        font-size: 3vw;
+        text-align: left;
+    }
+
+    button:hover {
+        font-size: 3vw;
+    }
+
+    #pdfDoc {
+        width: 70%;
+        left: 15%;
+        height: 170vh;
+    }
+
+}
