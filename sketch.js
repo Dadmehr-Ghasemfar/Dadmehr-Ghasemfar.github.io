@@ -14,7 +14,9 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight * 1.5);
+    canvas = createCanvas(windowWidth, windowHeight * 5);
+    canvas.position(0, 0);
+    canvas.style('z-index', '-1')
     backID = floor(random(0, 13))
     //backID = 2.0;
     console.log("backID = " + backID);
@@ -56,51 +58,17 @@ function draw() {
             break;
     }
 
-    if (windowWidth > windowHeight) {
-        fill(backR, backG, backB);
-        stroke(0);
-        strokeWeight(2);
-        rect(width * 0.815, height * 0.185, width * 0.12, height * 0.07, 20);
-        textAlign(CENTER);
-        noStroke();
-        fill(0);
-        textSize(map(width * 0.1, 0, 160, 14, 30));
-        text(name, width * 0.8, height * 0.195, width * 0.15, height * 0.07)
-        textSize(map(width * 0.1, 0, 160, 6, 14));
-        text("by Dadmehr Ghasemfar", width * 0.8, height * 0.23, width * 0.15, height * 0.07);
-        fill(backR, backG, backB);
-        strokeWeight(2);
-        stroke(0);
-        rect(width * 0.05, height * 0.17, width * 0.24, height * 0.1, 10);
-        noStroke();
-        fill(0);
-        textSize(map(width * 0.1, 0, 160, 8, 20));
-        textStyle(ITALIC);
-        text("Refresh The Page For Funky Interactive Backgrounds! All custom JavaScript by yours trully", width * 0.05, height * 0.18, width * 0.24, height * 0.1);
-        textStyle(NORMAL);
-    } else {
-        fill(backR, backG, backB);
-        stroke(0);
-        strokeWeight(2);
-        rect(width * 0.73, height * 0.12, width * 0.24, height * 0.05, 20);
-        textAlign(CENTER);
-        noStroke();
-        fill(0);
-        textSize(map(width * 0.1, 0, 160, 16, 30));
-        text(name, width * 0.76, height * 0.126, width * 0.19, height * 0.07)
-        textSize(map(width * 0.1, 0, 160, 10, 14));
-        text("by Dadmehr Ghasemfar", width * 0.775, height * 0.15, width * 0.15, height * 0.07);
-        fill(backR, backG, backB);
-        strokeWeight(2);
-        stroke(0);
-        rect(width * 0.05, height * 0.12, width * 0.24, height * 0.1, 10);
-        noStroke();
-        fill(0);
-        textSize(map(width * 0.1, 0, 160, 10, 20));
-        textStyle(ITALIC);
-        text("Refresh The Page For Funky Interactive Backgrounds! All custom JavaScript by yours trully", width * 0.05, height * 0.13, width * 0.24, height * 0.1);
-        textStyle(NORMAL);
-    }
+    fill(backR, backG, backB);
+    stroke(0);
+    strokeWeight(3);
+    rHeight = width * 0.064;
+    rWidth = width * 0.064*map(name.length, 4, 12, 2.1, 4.7);
+    rect((width - rWidth) - rWidth*0.2, width * 0.028, rWidth, rHeight);
+    textAlign(LEFT);
+    noStroke();
+    fill(0);
+    textSize(map(width, 0, 2000, 14, 70));
+    text(name, (width - rWidth) - rWidth*0.15, width * 0.04, rWidth, rHeight)
 
     strokeWeight(5);
     stroke(0);

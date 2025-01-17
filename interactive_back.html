@@ -12,190 +12,65 @@
     <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
 
     <style>
-        #titleDiv {
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%;
-            position: absolute;
-            top: 5%;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
-
-        #mainTitle {
-            font-size: 7vw;
-            font-weight: bold;
-            text-align: center;
-            border: 8px solid #8C5D23;
-            border-radius: 32px;
-            background: #D9B384;
-        }
-
-        #aboutMeDiv {
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%;
-            border: 8px solid #8C5D23;
-            border-radius: 32px;
-            background: #D9B384;
-
-            text-align: center;
-        }
-
-        .column {
-            float: left;
-            width: 30.33%;
-            padding: 5px;
-        }
-
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-            left: 0;
-            right: 0;
-        }
-
-        button {
-            transition-duration: 0.4s;
-            border-radius: 32px;
-            background-color: #6BB0BF;
-            padding: 14px 14px;
-            font-size: 4vw;
-            font-weight: bold;
-            text-align: center;
-            border: 8px solid #025373;
-            color: #024959;
-            margin: 16px auto;
-            display: block;
-            width: 80%;
-        }
-
-        button:hover {
-            border-radius: 32px;
-            background-color: #D9B384;
-            padding: 14px 14px;
-            font-size: 9vw;
-            text-align: center;
-            border: 8px solid #8C5D23;
-            margin: 16px auto;
-            color: black;
-            display: block;
-        }
-
-        #buttonsDiv {
-            position: absolute;
-            top: 15%;
-            width: 40%;
-            left: 30%;
-            right 30%;
+        #allContent {
+            display: none;
         }
 
         #backgroundSketch {
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            right 0%;
+            display: none;
         }
 
         @media only screen and (min-width: 600px) {
 
-            #titleDiv {
-                margin-left: auto;
-                margin-right: auto;
-                width: 95%;
+            #phone_only {
+                display: none;
+            }
+
+            #allContent {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
                 position: absolute;
                 top: 0%;
-                left: 0;
-                right: 0;
-                text-align: center;
+                width: 100%;
             }
 
             #mainTitle {
-                font-size: 5vw;
+                font-size: 4vw;
                 font-weight: bold;
+                padding: 4px 4px;
                 text-align: center;
-                margin-bottom: 2%;
-                margin-top: 2%;
-            }
-
-            #aboutMeDiv {
-                left: 0;
-                right: 0;
-                position: absolute;
-                margin-left: auto;
-                margin-right: auto;
-                width: 50%;
-                font-size: 2vw;
-                border: 8px solid #8C5D23;
-                border-radius: 32px;
-                background: #D9B384;
-                position: absolute;
-                top: 30%;
-                overflow: hidden;
-
-                text-align: center;
-            }
-
-            .column {
-                float: left;
-                width: 30%;
-                padding: 5px;
-            }
-
-            .row::after {
-                content: "";
-                clear: both;
-                display: table;
-                left: 0;
-                right: 0;
+                border: 5px solid #000000;
+                background: #FFFFFF;
+                position: relative;
+                left: 5%;
             }
 
             button {
-                border-radius: 32px;
-                background-color: #6BB0BF;
-                padding: 14px 14px;
-                font-size: 4vw;
-                font-weight: bold;
+                transition-duration: 0.4s;
+                background-color: #FFFFFF;
+                padding: 7px 7px;
+                font-size: 2.5vw;
                 text-align: center;
-                left: 0;
-                right: 0;
-                position: absolute;
-                top: 250%;
-                border: 8px solid #025373;
-                margin: 5% auto;
-                display: block;
+                border: 5px solid #025373;
+                color: #024959;
+                position: relative;
+                left: 5%;
+                margin-bottom: 1%;
             }
 
             button:hover {
-                border-radius: 32px;
-                background-color: #D9B384;
-                padding: 14px 14px;
-                font-size: 5vw;
-                text-align: center;
-                border: 8px solid #8C5D23;
-                margin: 5% auto;
-                color: black;
-                display: block;
-                position: absolute;
-                top: 250%;
-            }
-
-            #buttonsDiv {
-                position: absolute;
-                top: 20%;
-                width: 40%;
-                left: 30%;
-                right 30%;
+                background-color: #F2D785;
+                font-size: 2.5vw;
+                border: 5px solid #6E4900;
+                color: #6E4900;
             }
 
             #backgroundSketch {
                 position: absolute;
-                top: 0%;
-                left: 0%;
-                right 0%;
+                top: 0;
             }
+
         }
 
     </style>
@@ -204,21 +79,23 @@
 
 <body>
 
-    <canvas id="backgroundSketch">
-        <script src="sketch.js"> </script>
-    </canvas>
+    <img src="Only_On_PC.png" id="phone_only" />
 
-    <div id="titleDiv">
-        <h1 id="mainTitle">Interactive Backgrounds - Desktop Only </h1>
-    </div>
+    <div id="allContent">
 
-
+        <canvas id="backgroundSketch">
+            <script src="sketch.js"> </script>
+        </canvas>
 
 
-    <div id="buttonsDiv">
+        <h1 id="mainTitle">Interactive Backgrounds</h1>
+
+        <button id="homeButton" onclick=window.location.href="interactive_back.html"> New Background </button>
+
         <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
-    </div>
 
+
+    </div>
 </body>
 
 </html>
