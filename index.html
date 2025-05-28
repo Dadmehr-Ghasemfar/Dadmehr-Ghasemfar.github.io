@@ -1,108 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <meta charset="utf-8" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
+        <title>Dadmehr Daniel Ghasemfar - Portfolio</title>
+    </head>
 
+    <body>
+        <canvas id="backgroundSketch">
+            <script src="background.js"></script>
+        </canvas>
 
-    <title style="fond-size:24px;">Dadmehr Daniel Ghasemfar - Portfolio</title>
-
-    <style>
-        #mainTitle {
-            font-size: 370%;
-            font-weight: bold;
-            text-align: center;
-            border: 5px solid #000000;
-            border-radius: 0px;
-            background: #FFFFFF;
-            position: absolute;
-            top: 3%;
-            left: 5%;
-            right: 5%;
-        }
-
-        button {
-            transition-duration: 0.4s;
-            background-color: #FFFFFF;
-            font-size: 270%;
-            width: 100%;
-            text-align: center;
-            border: 5px solid #025373;
-            color: #024959;
-            margin-bottom: 5%;
-            margin-top: 5%;
-            display: block;
-            border-radius: 0px;
-        }
-
-        button:hover {
-            background-color: #F2D785;
-            font-size: 270%;
-            border: 5px solid #6E4900;
-            border-radius: 0px;
-            color: #6E4900;
-        }
-
-        #buttonsDiv {
-            position: absolute;
-            padding-top: 25%;
-            width: 80%;
-            left: 10%;
-        }
-
-        @media only screen and (min-width: 600px) {
-
-            #mainTitle {
-                font-size: 8vw;
-                top: 0%;
-                width: 80%;
-                left: 10%;
-            }
-
-            button {
-                width: auto;
-                margin-bottom: 3%;
-                margin-top: 3%;
-                font-size: 6vw;
-            }
-
-            button:hover {
-                font-size: 6vw;
-            }
-
-            #buttonsDiv {
-                position: absolute;
-                padding-top: 5%;
-                width: 80%;
-                left: 10%;
-            }
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-    <canvas id="backgroundSketch">
-        <script src="background.js"> </script>
-    </canvas>
-
-    <div id="titleDiv">
         <h1 id="mainTitle">Dadmehr Ghasemfar</h1>
-    </div>
 
-    <div id="buttonsDiv">
-        <button id="aboutMe" onclick=window.location.href="aboutMe.html"> About Me </button>
-        <button id="myWorks" onclick=window.location.href="projectsPage.html"> Projects </button>
-        <button id="drone" onclick=window.location.href="droneShots.html"> Drone Shots </button>
-        <button id="customBackground" onclick=window.location.href="interactive_back.html"> Desktop Applets </button>
-    </div>
-
-</body>
-
+        <div id="buttonsDiv">
+            <button id="aboutMe" onclick="window.location.href='aboutMe.html'">About Me</button>
+            <button id="myWorks" onclick="window.location.href='projectsPage.html'">Projects</button>
+            <button id="drone" onclick="window.location.href='droneShots.html'">Drone Shots</button>
+            <button id="customBackground" onclick="window.location.href='interactive_back.html'">Applets
+            </button>
+        </div>
+    </body>
 </html>

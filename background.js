@@ -1,9 +1,10 @@
 var canvas;
+var window_height_factor = 2;
 
 function setup() {
-    canvas = createCanvas(windowWidth, windowHeight * 5);
+    canvas = createCanvas(windowWidth, windowHeight * window_height_factor);
     canvas.position(0, 0);
-    canvas.style('z-index', '-1')
+    canvas.style("z-index", "-1");
 
     Cback = {
         r: 255,
@@ -35,7 +36,6 @@ function setup() {
         b: 240
     };
 
-
     tails = new Array();
     num_tails = map(windowWidth, 0, 2000, 0, 70);
     for (i = 0; i < num_tails; i++) {
@@ -49,7 +49,7 @@ function draw() {
     noStroke();
 
     for (i = 0; i < tails.length; i++) {
-        t = tails[i]
+        t = tails[i];
         strokeWeight(t.width);
 
         stroke(t.r, t.g, t.b, 250);
@@ -61,19 +61,16 @@ function draw() {
         stroke(t.r, t.g, t.b, 50);
         line(t.x, t.y, t.x, t.y - t.tail_len * 0.999);
 
-        t.y += t.velocity
-        if (t.y > windowHeight * 5.5) {
+        t.y += t.velocity;
+        if (t.y > windowHeight * window_height_factor) {
             random_tail = create_random_tail();
-            tails[i] = (random_tail);
+            tails[i] = random_tail;
         }
     }
-
-
-
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight * 5);
+    resizeCanvas(windowWidth, windowHeight * window_height_factor);
 }
 
 function create_random_tail() {
@@ -86,26 +83,26 @@ function create_random_tail() {
         r: 0,
         g: 0,
         b: 0,
-        tail_len: random() * 200 + 100,
+        tail_len: random() * 200 + 100
     };
 
     if (random_tail.color_indx <= 0.25) {
-        random_tail.r = C1.r
-        random_tail.g = C1.g
-        random_tail.b = C1.b
-    } else if (random_tail.color_indx <= 0.50) {
-        random_tail.r = C2.r
-        random_tail.g = C2.g
-        random_tail.b = C2.b
+        random_tail.r = C1.r;
+        random_tail.g = C1.g;
+        random_tail.b = C1.b;
+    } else if (random_tail.color_indx <= 0.5) {
+        random_tail.r = C2.r;
+        random_tail.g = C2.g;
+        random_tail.b = C2.b;
     } else if (random_tail.color_indx <= 0.75) {
-        random_tail.r = C3.r
-        random_tail.g = C3.g
-        random_tail.b = C3.b
+        random_tail.r = C3.r;
+        random_tail.g = C3.g;
+        random_tail.b = C3.b;
     } else if (random_tail.color_indx <= 0.999) {
-        random_tail.r = C4.r
-        random_tail.g = C4.g
-        random_tail.b = C4.b
+        random_tail.r = C4.r;
+        random_tail.g = C4.g;
+        random_tail.b = C4.b;
     }
-    
+
     return random_tail;
 }

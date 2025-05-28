@@ -1,151 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <meta charset="utf-8" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
+        <title>Dadmehr Ghasemfar - Portfolio</title>
+    </head>
 
+    <body>
+        <canvas id="backgroundSketch">
+            <script src="background.js"></script>
+        </canvas>
 
-    <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
+        <div id="allContent">
+            <h1 id="mainTitle">Engineering Projects</h1>
 
-    <style>
-        #allContent {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: absolute;
-            width: 100%;
-            left: 0;
-            top: 0;
-        }
+            <div id="projectsButtons">
+                <button id="projectFEA" onclick="window.location.href='project_FEA.html'">FEA Wave Propagation</button>
+                <button id="projectBucko" onclick="window.location.href='project_Bucko.html'">
+                    Bucko the Bipedal Robot
+                </button>
+                <button id="projectCFD" onclick="window.location.href='project_simpleCFD.html'">Simple CFD</button>
+                <button id="projectNBody" onclick="window.location.href='project_NBody.html'">N-Body Simulation</button>
+                <button id="projectMars" onclick="window.location.href='project_MarsProp.html'">
+                    Electro-Resistive Thrust
+                </button>
+                <button id="projectTVC" onclick="window.location.href='project_TVC.html'">Thrust Vector Control</button>
+            </div>
 
-        #mainTitle {
-            font-size: 10vw;
-            font-weight: bold;
-            text-align: center;
-            border: 5px solid #000000;
-            background: #FFFFFF;
-            padding: 5px;
-            margin-top: 15%;
-            left: 15%;
-            right: 15%;
-        }
-
-        #projectsButtons {
-            width: 70%;
-            left: 15%;
-        }
-
-        button {
-            transition-duration: 0.4s;
-            background-color: #FFFFFF;
-            font-size: 270%;
-            text-align: center;
-            border: 5px solid #025373;
-            color: #024959;
-            width: 100%;
-            margin-bottom: 5%;
-            margin-top: 5%;
-            display: block;
-        }
-
-        button:hover {
-            background-color: #F2D785;
-            font-size: 270%;
-            border: 5px solid #6E4900;
-            color: #6E4900;
-        }
-
-        .column {
-            float: left;
-            width: 30.33%;
-            padding: 5px;
-        }
-
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        #homeButton {
-            border: 5px solid #000000;
-            color: #000000;
-            font-size: 8vw;
-            margin-top: 5%;
-            width: 60%;
-        }
-
-        @media only screen and (min-width: 600px) {
-
-            #allContent {
-                align-items: flex-start;
-                width: 80%;
-                left: 10%;
-            }
-
-            #mainTitle {
-                font-size: 7vw;
-                margin-top: 5%;
-                margin-bottom: 2%;
-            }
-
-            button {
-                width: auto;
-                margin-bottom: 4%;
-                margin-top: 4%;
-                font-size: 4vw;
-                text-align: left;
-            }
-
-            button:hover {
-                font-size: 4vw;
-            }
-
-            .column {
-                float: left;
-                width: 32%;
-                padding: 5px;
-            }
-
-            #homeButton {
-                font-size: 3vw;
-                width: auto;
-            }
-
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-    <canvas id="backgroundSketch">
-        <script src="background.js"> </script>
-    </canvas>
-
-    <div id="allContent">
-        <h1 id="mainTitle">Engineering Projects</h1>
-
-        <div id="projectsButtons">
-
-            <button id="projectFEA" onclick=window.location.href="project_FEA.html"> FEA Wave Propogation </button>
-            <button id="aboutMe" onclick=window.location.href="project_Bucko.html"> Bucko the Bipedal Robot </button>
-            <button id="customBackground" onclick=window.location.href="project_simpleCFD.html"> Simple CFD </button>
-            <button id="customBackground" onclick=window.location.href="project_NBody.html"> N-Body Simulation </button>
-            <button id="customBackground" onclick=window.location.href="project_MarsProp.html"> Electro-Resistive Propulsion </button>
-            <button id="customBackground" onclick=window.location.href="project_TVC.html"> Thrust Vector Control </button>
-
+            <button id="homeButton" onclick="window.location.href='index.html'">Home Page</button>
         </div>
-
-
-        <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
-    </div>
-
-</body>
-
+    </body>
 </html>
