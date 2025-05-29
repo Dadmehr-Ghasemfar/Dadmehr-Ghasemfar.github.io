@@ -1,14 +1,18 @@
 #mainTitle {
-    width: fit-content;
-    margin: 30px auto 30px auto;
-
-    font-size: 9vw;
+    font-size: 8vw;
     font-weight: bold;
     text-align: center;
 
-    padding: 0 5px 0 5px;
-    border: 4px solid #000000;
+    padding: 5px 5px 0 5px;
+    border: 3px solid #000000;
     background: #ffffff;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    
+    width: fit-content;
+    margin: 20px 0 20px 20px;
 }
 
 button {
@@ -16,21 +20,38 @@ button {
     background-color: #ffffff;
     font-size: 8vw;
     text-align: center;
-    border: 4px solid #025373;
+    border: 3px solid #025373;
     color: #024959;
     display: block;
-    width: 60%;
+    width: fit-content;
 
-    margin: 15px auto 0 auto;
-    padding: 2px 2px 2px 2px;
+    margin: 10px 0 0 20px;
+    padding: 4px 4px 4px 4px;
 }
 
 button:hover {
     background-color: #f2d785;
-    border: 4px solid #6e4900;
+    border: 3px solid #6e4900;
     color: #6e4900;
+}
 
-    padding: 4px 4px 4px 4px;
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 10px 15px 10px;
+}
+
+.top-buttons button {
+    font-size: 6vw;
+    border: 3px solid #000000;
+    color: #000000;
+    border-radius: 10px;
+    margin: 0;
+}
+
+#projectsButtons button {
+    font-size: 6vw;
 }
 
 #backgroundSketch {
@@ -106,8 +127,19 @@ img {
     #aboutMeDiv {
         font-size: 3vw;
         margin: 10px auto 10px auto;
-        text-align: center;
         display: flex;
         width: 60%;
     }
+
+    .top-buttons {
+        justify-content: flex-end;
+        gap: 15px;
+        margin: 10px 0 20px 0;
+    }
+    
+    .top-buttons button {
+        font-size: 6vw;
+        margin: 0 0 0 0;
+    }
+
 }

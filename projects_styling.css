@@ -1,46 +1,55 @@
-        #allContent {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: absolute;
-            width: 100%;
-        }
+#allContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+}
 
-        #mainTitle {
-            font-size: 5vw;
-            border: 3px solid #000000;
-            padding: 5px;
-            margin: 10px;
-        }
+#mainTitle {
+    font-size: 5vw;
+    border: 3px solid #000000;
+    padding: 5px;
+    margin: 10px;
+}
 
-        button {
-            font-size: 5vw;
-            width: 40%;
-            text-align: center;
-            border: 3px solid #000000;
-            color: #000000;
-        }
+button {
+    font-size: 5vw;
+    width: 40%;
+    text-align: center;
+    border: 3px solid #000000;
+    color: #000000;
+}
 
-        #pdfDoc {
-            width: 90%;
-            height: 100vh;
-            border: 3px solid #000000;
-        }
+#pdfDoc {
+    width: 90%;
+    height: 100vh;
+    border: 3px solid #000000;
+}
 
-        @media only screen and (min-width: 600px) {
+.top-buttons {
+    margin: 0 0 10px 0;
+}
 
-            #mainTitle {
-                font-size: 3vw;
-            }
+.top-buttons button {
+    font-size: 4vw;
+    width: auto;
+}
 
-            button {
-                width: auto;
-                font-size: 3vw;
-            }
+@media only screen and (min-width: 600px) {
 
-            #pdfDoc {
-                width: 80%;
-                left: 10%;
-                height: 110vh;
-            }
-        }
+    #mainTitle {
+        font-size: 6vw;
+    }
+
+    button {
+        width: auto;
+        font-size: 3vw;
+    }
+
+    #pdfDoc {
+        width: 80%;
+        left: 10%;
+        height: 110vh;
+    }
+}

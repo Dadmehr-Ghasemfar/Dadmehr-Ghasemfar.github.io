@@ -7,6 +7,7 @@
     <title>Dadmehr Ghasemfar - Portfolio</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="projects_styling.css" />
 </head>
 
@@ -15,7 +16,11 @@
     <script src="background.js"></script>
 
     <div id="allContent">
-        <h1 id="mainTitle">Bipedal Walking and Dancing Robot</h1>
+        <div class="top-buttons">
+            <button onclick="window.location.href='index.html'">Home</button>
+            <button onclick="window.location.href='projectsPage.html'">Projects</button>
+            <button onclick=history.back()>Back</button>
+        </div>
 
         <div id="pdfDoc">
             <iframe
@@ -27,9 +32,6 @@
                 src="https://drive.google.com/file/d/1CM29p2jPxn9AdGT9SE09_x5ARL26waoa/preview#view=FitH">
             </iframe>
         </div>
-
-        <button id="homeButton" onclick="window.location.href='index.html'">Home Page</button>
-        <button id="backButton" onclick="window.location.href='projectsPage.html'">Back</button>
     </div>
 </body>
 </html>

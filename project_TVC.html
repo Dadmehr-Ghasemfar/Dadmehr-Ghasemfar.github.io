@@ -18,7 +18,12 @@
     <script src="background.js"></script>
 
     <div id="allContent">
-        <h1 id="mainTitle">Thrust Controlled Model Rocket</h1>
+        
+        <div class="top-buttons">
+            <button onclick="window.location.href='index.html'">Home</button>
+            <button onclick="window.location.href='projectsPage.html'">Projects</button>
+            <button onclick=history.back()>Back</button>
+        </div>
 
         <div id="pdfDoc" style="height: 50vh;">
             <iframe 
@@ -30,9 +35,6 @@
                 src="https://drive.google.com/file/d/1hqEYfWNYAUY3FSuPyzjGmSRbROxeRwc1/preview#view=FitH">
             </iframe>
         </div>
-
-        <button id="homeButton" onclick="window.location.href='index.html'">Home Page</button>
-        <button id="backButton" onclick="window.location.href='projectsPage.html'">Back</button>
     </div>
 
 </body>
