@@ -271,7 +271,7 @@ function pick_color_random(color_indx) {
 }
 
 function setBackgroundMode(mode) {
-    if (mode != background_ID) {
+    if (mode == "stripes" || mode == "bubbles" || mode == "focus" && mode != background_ID) {
         localStorage.setItem("backgroundMode", mode);
         background_ID = mode;
         run_once = false;
