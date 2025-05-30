@@ -1,5 +1,5 @@
-var background_ID = localStorage.getItem("backgroundMode") || "stripes";
-var window_height_factor = 2;
+var background_ID = localStorage.getItem("backgroundMode") || "focus";
+var window_height_factor = 3;
 var canvas;
 var run_once = false;
 
@@ -101,15 +101,66 @@ function background_1() {
 }
 
 function background_2() {
-    background(backR, backG, backB);
-
     if (run_once == false) {
+        background(backR, backG, backB);
+        numCircles = 200;
+        max_radius_circle = map(windowWidth, 100, 2000, 50, 100);
 
+        let isVertical = windowHeight / windowWidth > 1;
+        let numPhotos = 7;
+        let randVar = floor(random(1, numPhotos + 1));
+
+        let imagePath;
+        if (isVertical) {
+            imagePath = 'img_vert' + randVar + '.jpg';
+        } else {
+            imagePath = 'img_hor' + randVar + '.jpg';
+        }
+
+        console.log("Image: " + imagePath);
+
+        img = loadImage(imagePath);
         run_once = true;
+        frame_count = 0;
     } else {
+        noStroke();
+        frame_count ++;
+        let scale, newWidth, newHeight;
+        let isVertical = windowHeight / windowWidth > 1;
 
+        if (isVertical) {
+            scale = 1.2 * windowHeight / img.height;
+        } else {
+            scale = 1.2 * windowWidth / img.width;
+        }
+        newWidth = img.width * scale;
+        newHeight = img.height * scale;
+
+        let xOffset = (windowWidth - newWidth) / 2;
+        let yOffset = (windowHeight - newHeight) / 2;
+        
+        radius_circle = max(map(frame_count, 0, 1400, max_radius_circle, 10), 10);
+        console.log("radius_circle = "+radius_circle);
+
+        for (let i = 0; i <= numCircles; i++) {
+            let xCoor = random(windowWidth * 2) - 200;
+            let yCoor = random(windowHeight * 3.5) - 200;
+
+            let sampleX = map(xCoor - xOffset, 0, newWidth, 0, img.width);
+            let sampleY = map(yCoor - yOffset, 0, newHeight, 0, img.height);
+
+            if (
+                sampleX >= 0 && sampleX < img.width &&
+                sampleY >= 0 && sampleY < img.height
+            ) {
+                let c = img.get(sampleX, sampleY);
+                fill(c[0], c[1], c[2], 50);
+                ellipse(xCoor, yCoor, random(3, radius_circle));
+            }
+        }
     }
 }
+
 
 function background_3() {
     background(backR, backG, backB);
@@ -214,7 +265,7 @@ function pick_color_random(color_indx) {
         return [C2.r, C2.g, C2.b];
     } else if (color_indx <= 0.75) {
         return [C3.r, C3.g, C3.b];
-    } else if (color_indx <= 0.999) {
+    } else if (color_indx <= 1.0) {
         return [C4.r, C4.g, C4.b];
     }
 }
@@ -223,7 +274,7 @@ function setBackgroundMode(mode) {
     localStorage.setItem("backgroundMode", mode);
     background_ID = mode;
     run_once = false;
-    console.log("Background changed to "+mode);
+    console.log("Background changed to " + mode);
 }
 
 function toggleDropdown() {
