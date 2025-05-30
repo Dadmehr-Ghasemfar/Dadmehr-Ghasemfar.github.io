@@ -1,4 +1,4 @@
-var background_ID = localStorage.getItem("backgroundMode") || "focus";
+var background_ID = localStorage.getItem("backgroundMode") || "stripes";
 var window_height_factor = 3;
 var canvas;
 var run_once = false;
