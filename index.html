@@ -1,28 +1,34 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+    <title>Dadmehr Daniel Ghasemfar - Portfolio</title>
+  </head>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <meta charset="utf-8" />
+  <body>
+    <canvas id="backgroundSketch"></canvas>
+    <script src="background.js"></script>
 
-        <title>Dadmehr Daniel Ghasemfar - Portfolio</title>
-    </head>
+    <h1 id="mainTitle">Dadmehr Ghasemfar</h1>
 
-    <body>
-        <canvas id="backgroundSketch">
-            <script src="background.js"></script>
-        </canvas>
+    <div id="buttonsDiv">
+      <button id="aboutMe" onclick="window.location.href='aboutMe.html'">About Me</button>
+      <button id="myWorks" onclick="window.location.href='projectsPage.html'">Projects</button>
+      <button id="drone" onclick="window.location.href='droneShots.html'">Drone Shots</button>
 
-        <h1 id="mainTitle">Dadmehr Ghasemfar</h1>
-
-        <div id="buttonsDiv">
-            <button id="aboutMe" onclick="window.location.href='aboutMe.html'">About Me</button>
-            <button id="myWorks" onclick="window.location.href='projectsPage.html'">Projects</button>
-            <button id="drone" onclick="window.location.href='droneShots.html'">Drone Shots</button>
-            <button id="customBackground" onclick="window.location.href='interactive_back.html'">Applets
-            </button>
+      <div class="dropdown">
+        <button onclick="toggleDropdown()" class="dropbtn">Backgrounds</button>
+        <div id="dropdownMenu" class="dropdown-content">
+          <button onclick="setBackgroundMode('stripes')">Stripes</button>
+          <button onclick="setBackgroundMode('bubbles')">Bubble</button>
+          <button onclick="setBackgroundMode('focus')">Focus</button>
         </div>
-    </body>
+      </div>
+
+    </div>
+
+  </body>
 </html>

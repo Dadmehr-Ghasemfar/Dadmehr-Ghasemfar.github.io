@@ -1,16 +1,16 @@
 #mainTitle {
-    font-size: 8vw;
+    font-size: 9vw;
     font-weight: bold;
     text-align: center;
 
     padding: 5px 5px 0 5px;
     border: 3px solid #000000;
     background: #ffffff;
-    
+
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
-    
+    text-overflow: ellipsis;
+
     width: fit-content;
     margin: 20px 0 20px 20px;
 }
@@ -107,8 +107,57 @@ button:hover {
 
 img {
     border: 3px solid #000000;
-
 }
+
+.dropdown {
+    position: relative;
+    display: block;
+    margin: 10px 0 0 0;
+}
+
+.dropbtn {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 5px;
+    font-size: 8vw;
+    border: 3px solid #000000;
+    margin: 5px 5px 10px 20px;
+    width: fit-content;
+    box-sizing: border-box;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    display: none;
+    background-color: transparent;
+    box-shadow: none;
+    overflow: hidden;
+    width: 20%;
+    box-sizing: border-box;
+}
+
+.dropdown-content button {
+    background: #FFFFFF;
+    color: #000000;
+    padding: 5px;
+    font-size: 4vw;
+    width: 100%;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 5px 0 5px 0;
+}
+
+.dropdown-content button:hover {
+    background-color: #e5e5e5;
+}
+
+.show {
+    display: block;
+}
+
 
 @media only screen and (min-aspect-ratio: 5/6) {
     #mainTitle {
@@ -136,10 +185,22 @@ img {
         gap: 15px;
         margin: 10px 0 20px 0;
     }
-    
+
     .top-buttons button {
         font-size: 6vw;
         margin: 0 0 0 0;
+    }
+
+    .dropdown {
+        margin: 15px 20px 0 40px;
+    }
+
+    .dropdown-content button {
+        margin: 15px 0 0 0;
+    }
+
+    .dropbtn {
+        font-size: 7vw;
     }
 
 }
