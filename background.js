@@ -1,4 +1,4 @@
-var background_ID = "stripes";
+var background_ID = localStorage.getItem("backgroundMode") || "stripes";
 var window_height_factor = 2;
 var canvas;
 var run_once = false;
@@ -220,6 +220,7 @@ function pick_color_random(color_indx) {
 }
 
 function setBackgroundMode(mode) {
+    localStorage.setItem("backgroundMode", mode);
     background_ID = mode;
     run_once = false;
     console.log("Background changed to "+mode);
