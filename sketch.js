@@ -7,7 +7,7 @@ backB = 255;
 
 function preload() {
     numPhotos = 11;
-    randVar = floor(random(0, numPhotos))
+    randVar = floor(random(0, numPhotos));
     //randVar = 10.0;
     console.log("Image ID = " + randVar);
     imgLoad = loadImage('img' + randVar + '.jpg');

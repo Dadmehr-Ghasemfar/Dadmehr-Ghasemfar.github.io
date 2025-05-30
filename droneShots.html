@@ -6,111 +6,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="drone_style.css">
     <meta charset="utf-8" />
 
-
     <title style="fond-size:24px;">Dadmehr Ghasemfar - Portfolio</title>
-
-    <style>
-        }
-
-        #allContent {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: absolute;
-            top: 0%;
-            width: 100%;
-        }
-
-        #mainTitle {
-            font-size: 8vw;
-            font-weight: bold;
-            text-align: center;
-            border: 5px solid #000000;
-            background: #FFFFFF;
-            position: relative;
-            width: 70%;
-            left: 15%;
-            margin-top: 10%;
-        }
-
-        #subTitle {
-            font-size: 4vw;
-            font-weight: normal;
-            text-align: center;
-            border: 3px solid #000000;
-            background: #FFFFFF;
-            position: relative;
-            width: 60%;
-            left: 20%;
-        }
-
-        button {
-            transition-duration: 0.4s;
-            background-color: #FFFFFF;
-            padding: 7px 7px;
-            margin: 5% auto;
-            font-size: 200%;
-            text-align: center;
-            border: 5px solid #025373;
-            color: #024959;
-            display: block;
-            width: 60%;
-            left: 20%;
-        }
-
-        button:hover {
-            background-color: #F2D785;
-            font-size: 200%;
-            border: 5px solid #6E4900;
-            color: #6E4900;
-        }
-
-        video {
-            position: relative;
-            border: 3px solid #000000;
-            border-radius: 32px;
-            width: 80%;
-            left: 10%;
-            margin-bottom: 5%;
-        }
-
-        #videosDiv {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-
-        #backgroundSketch {
-            position: absolute;
-            top: 0;
-        }
-
-        @media only screen and (min-width: 600px) {
-
-            #mainTitle {
-                font-size: 5vw;
-                width: 40%;
-                left: 30%;
-            }
-
-            #subTitle {
-                font-size: 2vw;
-                width: 60%;
-                left: 20%;
-            }
-
-            #videosDiv {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-
-        }
-
-    </style>
 
 </head>
 
@@ -123,6 +22,12 @@
 
         <div id="titleDiv">
             <h1 id="mainTitle">Drone Timelapses</h1>
+        </div>
+        
+        <div class="top-buttons">
+            <button onclick="window.location.href='index.html'">Home</button>
+            <button onclick="window.location.href='projectsPage.html'">Projects</button>
+            <button onclick=history.back()>Back</button>
         </div>
 
         <div id="videosDiv">
@@ -182,12 +87,8 @@
                     Your browser does not support HTML video.
                 </video>
             </div>
-
         </div>
-
-        <button id="homeButton" onclick=window.location.href="index.html"> Home Page </button>
     </div>
-
 </body>
 
 </html>

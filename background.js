@@ -124,7 +124,7 @@ function background_2() {
         frame_count = 0;
     } else {
         noStroke();
-        frame_count ++;
+        frame_count++;
         let scale, newWidth, newHeight;
         let isVertical = windowHeight / windowWidth > 1;
 
@@ -138,9 +138,9 @@ function background_2() {
 
         let xOffset = (windowWidth - newWidth) / 2;
         let yOffset = (windowHeight - newHeight) / 2;
-        
+
         radius_circle = max(map(frame_count, 0, 1400, max_radius_circle, 10), 10);
-        console.log("radius_circle = "+radius_circle);
+        console.log("radius_circle = " + radius_circle);
 
         for (let i = 0; i <= numCircles; i++) {
             let xCoor = random(windowWidth * 2) - 200;
@@ -271,10 +271,12 @@ function pick_color_random(color_indx) {
 }
 
 function setBackgroundMode(mode) {
-    localStorage.setItem("backgroundMode", mode);
-    background_ID = mode;
-    run_once = false;
-    console.log("Background changed to " + mode);
+    if (mode != background_ID) {
+        localStorage.setItem("backgroundMode", mode);
+        background_ID = mode;
+        run_once = false;
+        console.log("Background changed to " + mode);
+    }
 }
 
 function toggleDropdown() {
