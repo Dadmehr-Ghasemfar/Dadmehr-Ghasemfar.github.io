@@ -112,9 +112,9 @@ function background_2() {
 
         let imagePath;
         if (isVertical) {
-            imagePath = 'img_vert' + randVar + '.jpg';
+            imagePath = 'images/img_vert' + randVar + '.jpg';
         } else {
-            imagePath = 'img_hor' + randVar + '.jpg';
+            imagePath = 'images/img_hor' + randVar + '.jpg';
         }
 
         console.log("Image: " + imagePath);
