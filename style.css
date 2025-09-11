@@ -139,7 +139,7 @@ img {
     background-color: transparent;
     box-shadow: none;
     overflow: hidden;
-    width: 25%;
+    width: 30%;
     box-sizing: border-box;
 }
 
@@ -163,6 +163,69 @@ img {
     display: block;
 }
 
+/* Toggle Switch - More Specific Styles */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 34px;
+  top: 5px;
+  vertical-align: middle;
+}
+
+.toggle-switch > .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  box-sizing: border-box;
+}
+
+.toggle-switch > .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 15px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+.toggle-switch > input:checked + .slider {
+  background-color: #025373;
+}
+
+.toggle-switch > input:checked + .slider:before {
+  transform: translateX(77px);
+}
+
+.toggle-switch > .labels {
+  position: absolute;
+  top: 8px;
+  font-size: 12px;
+  color: white;
+  width: 100%;
+  pointer-events: none;
+  font-family: sans-serif;
+}
+
+.toggle-switch > .labels:after {
+  content: attr(data-off);
+  position: absolute;
+  right: 10px;
+}
+
+.toggle-switch > input:checked ~ .labels:after {
+  content: attr(data-on);
+  left: 10px;
+  right: auto;
+}
 
 @media only screen and (min-aspect-ratio: 5/6) {
     #mainTitle {
@@ -173,7 +236,7 @@ img {
 
     button {
         width: fit-content;
-        font-size: 7vw;
+        font-size: 6vw;
         margin: 15px 0 0 60px;
         padding: 2px 2px 2px 2px;
     }

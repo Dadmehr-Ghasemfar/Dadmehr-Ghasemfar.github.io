@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dadmehr Daniel Ghasemfar - Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@0.12.2/dist/ml5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meyda@5.2.0/dist/web/meyda.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="applets_styling.css" />
+</head>
+    
+<body>
+  <div id="allContent">
+    <h1 id="mainTitle">Sound Analysis Script</h1>
+    
+    <!-- This is where your p5.js sketch will appear -->
+  </div>
+  
+  <div class="top-buttons">
+  <button onclick="window.location.href='../index.html'" id="homeBtn">Home</button>
+  <button onclick="window.location.href='../appletsPage.html'" id="appletsBtn">Applets</button>
+  <button onclick="window.location.href='../projectsPage.html'" id="backBtn">Projects</button>
+</div>
+  
+  <div class="bottom-controls">
+    <div class="controls-left">
+      <div class="controls-left">
+  <button id="SoundBTN" class="button">Start Test</button>
+</div>
+    </div>
+    
+    <div class="controls-right">
+      <div class="filter-controls">
+        <label for="lowFilter">Low (Hz):</label>
+        <input type="number" id="lowFilter" min="20" max="19900" value="100">
+      </div>
+      
+      <div class="filter-controls">
+        <label for="highFilter">High (Hz):</label>
+        <input type="number" id="highFilter" min="21" max="20000" value="5000">
+      </div>
+      
+      <div class="filter-controls">
+        <label class="toggle-switch">
+          <input type="checkbox" id="modelToggle">
+          <span class="slider"></span>
+          <span class="labels" data-on="AI Model" data-off="Standard Model"></span>
+        </label>
+      </div>
+      
+      <button id="applyFilters" class="button">Apply Filters</button>
+    </div>
+  </div>
+
+  <script src="sound_analysis_sketch.js"></script>
+</body>
+</html>
