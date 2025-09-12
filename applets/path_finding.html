@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathfinding Applet</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/addons/p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="applets_styling.css">
+</head>
+<body>
+  <div id="allContent">
+    <h1 id="mainTitle">Pathfinding Grid</h1>
+  </div>
+
+  <!-- Top buttons -->
+  <div class="top-buttons">
+    <button onclick="window.location.href='../index.html'">Home</button>
+    <button onclick="window.location.href='../appletsPage.html'">Applets</button>
+    <button onclick="window.location.href='../projectsPage.html'">Projects</button>
+  </div>
+
+  <!-- Bottom controls -->
+  <div class="bottom-controls">
+    <div class="controls-left">
+      <!-- Dropdown for grid mode moved to left side -->
+      <div class="filter-controls">
+        <label for="gridModeDropdown">Grid Mode:</label>
+        <select id="gridModeDropdown">
+          <option value="Empty">Empty</option>
+          <option value="Circle">Circle</option>
+          <option value="Rectangles">Rectangles</option>
+          <option value="L-Shapes">L-Shapes</option>
+          <option value="Random">Random</option>
+          <option value="Custom">Custom</option>
+        </select>
+      </div>
+      <!-- Add other left-side buttons here if needed -->
+    </div>
+
+    <div class="controls-right">
+      <!-- Right-side buttons remain here -->
+    </div>
+  </div>
+
+  <!-- Put JS AFTER all DOM elements -->
+  <script src="path_finding.js"></script>
+</body>
+</html>

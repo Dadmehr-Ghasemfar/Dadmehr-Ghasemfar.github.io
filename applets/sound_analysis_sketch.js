@@ -51,6 +51,7 @@
         const ONSET_REFRACTORY_MS = 75; // min gap between onsets (ms)
         const THRESH_STD_MULT = 2.3; // threshold = mean + k*std
         let lastOnsetTime = -Infinity;
+        let spectral_flux_thresh_min = 0.1;
         /* --------------------------------------- */
 
         /* --------- ESSENTIA STATE --------- */
@@ -63,8 +64,8 @@
         /* ---------------------------------- */
 
         let fft_history = []; // Array to store previous FFTs
-        const num_fft_history = 5; // How many previous FFTs to keep
-        const num_fft_separation = 5; // Frames between saved FFTs
+        const num_fft_history = 6; // How many previous FFTs to keep
+        const num_fft_separation = 2; // Frames between saved FFTs
         let fft_frame_counter = 0; // Counter to track frames for saving FFTs
 
 
@@ -169,6 +170,7 @@
                 if ((sound_log[sound_log.length - 1][0] - sound_log[0][0]) > log_length_time * 1000) {
                     sound_log.shift();
                 }
+                //console.log(sound_log);
 
                 let new_peaks = findLocalMaxima(sound_log, 5, 100);
                 if (new_peaks.length > 0) {
@@ -195,11 +197,11 @@
                 if (essentiaInitialized) {
                     processEssentiaOnsetDetection();
                 }
-
+                vertical_screen_offsetY_gap = !horizontalMode ? height/32 : 0;
                 // Draw first graph
                 draw_graph(
                     sound_log,
-                    graph1X - graphWidth / 2, graph1Y - graphHeight / 2, graphWidth, graphHeight,
+                    graph1X - graphWidth / 2, graph1Y - graphHeight / 2 - vertical_screen_offsetY_gap, graphWidth, graphHeight,
                     volume_plot_color,
                     "Volume vs Time Plot",
                     "Time (s)",
@@ -225,8 +227,8 @@
                 }
 
                 // Overlay onsets
-                draw_onsets(sound_log, onsetLog, graph1X - graphWidth / 2, graph1Y - graphHeight / 2, graphWidth, graphHeight, color(0, 255, 0));
-                draw_onsets(sound_log, essentiaOnsets, graph1X - graphWidth / 2, graph1Y - graphHeight / 2, graphWidth, graphHeight, color(255, 105, 180));
+                draw_onsets(sound_log, onsetLog, graph1X - graphWidth / 2, graph1Y - graphHeight / 2 - vertical_screen_offsetY_gap, graphWidth, graphHeight, color(0, 255, 0));
+                draw_onsets(sound_log, essentiaOnsets, graph1X - graphWidth / 2, graph1Y - graphHeight / 2 - vertical_screen_offsetY_gap, graphWidth, graphHeight, color(255, 105, 180));
             }
 
             // Display text
@@ -532,6 +534,8 @@
                 const mean = vals.reduce((a, b) => a + b, 0) / Math.max(1, vals.length);
                 const std = Math.sqrt(vals.reduce((a, b) => a + (b - mean) ** 2, 0) / Math.max(1, vals.length - 1));
                 currentFluxThreshold = mean + THRESH_STD_MULT * std;
+                currentFluxThreshold = Math.max(mean + THRESH_STD_MULT * std, spectral_flux_thresh_min);
+
 
                 // onset detection with refractory
                 if (flux > currentFluxThreshold && (nowMs - lastOnsetTime) > ONSET_REFRACTORY_MS) {
@@ -883,6 +887,17 @@
                 if (e.key === 'Enter') applyBtn.click();
             });
         }
+
+        function updateFilters(low, high) {
+            low_filter = low;
+            high_filter = high;
+
+            if (audioNodes.highPass) audioNodes.highPass.frequency.value = low_filter;
+            if (audioNodes.lowPass) audioNodes.lowPass.frequency.value = high_filter;
+
+            console.log(`Filters updated: low = ${low_filter} Hz, high = ${high_filter} Hz`);
+        }
+
 
         function windowResized() {
             resizeCanvas(windowWidth, windowHeight);

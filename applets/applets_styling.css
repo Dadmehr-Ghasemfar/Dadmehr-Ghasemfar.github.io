@@ -1,328 +1,383 @@
 /* Ensure p5.js canvas is in the background */
 canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
 
 /* Reset and base styles */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-color: #A67B56;
-  padding-bottom: 120px; /* space for bottom row */
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 120px;
+    /* space for bottom row */
 }
 
 /* Main title */
 #mainTitle {
-  font-size: 4vw;
-  font-weight: bold;
-  text-align: center;
-  background: #ffffff;
-  border: 3px solid #000000;
-  padding: 5px 5px 0 5px;
-  width: fit-content;
-  margin: 20px auto 10px auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: center;
+    background: #ffffff;
+    border: 3px solid #000000;
+    padding: 5px 5px 0 5px;
+    width: fit-content;
+    margin: 20px auto 10px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Top buttons under title */
 .top-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .top-buttons button {
-  font-size: 3vw;
-  border: 3px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 10px;
-  padding: 4px 8px;
-  cursor: pointer;
-  transition-duration: 0.4s;
+    font-size: 3vw;
+    border: 3px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .top-buttons button:hover {
-  background-color: #f2d785;
-  border: 3px solid #6e4900;
-  color: #6e4900;
+    background-color: #f2d785;
+    border: 3px solid #6e4900;
+    color: #6e4900;
 }
 
 /* Bottom row buttons */
 button {
-  transition-duration: 0.4s;
-  background-color: #ffffff;
-  font-size: 2.5vw;
-  text-align: center;
-  border: 3px solid #000000;
-  color: #000000;
-  display: block;
-  width: auto;
-  padding: 4px 8px;
-  cursor: pointer;
+    transition-duration: 0.4s;
+    background-color: #ffffff;
+    font-size: 2.5vw;
+    text-align: center;
+    border: 3px solid #000000;
+    color: #000000;
+    display: block;
+    width: auto;
+    padding: 4px 8px;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: #f2d785;
-  border: 3px solid #6e4900;
-  color: #6e4900;
+    background-color: #f2d785;
+    border: 3px solid #6e4900;
+    color: #6e4900;
 }
 
 /* Bottom controls row */
 .bottom-controls {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 10px 20px;
-  z-index: 10;
-  flex-wrap: wrap;
-  gap: 10px;
-  box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-sizing: border-box;
 }
 
 /* Left side */
 .controls-left {
-  flex: 1;
-  min-width: 120px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 /* Right side */
 .controls-right {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 15px;
-  align-items: center;
-  min-width: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 15px;
+    align-items: center;
+    min-width: 120px;
 }
 
 /* Filter labels and inputs */
 .filter-controls {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    max-width: 95vw;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .filter-controls label {
-  font-size: 2vw;
-  font-weight: bold;
-  margin-right: 5px;
+    font-size: 2vw;
+    font-weight: bold;
+    margin-right: 5px;
+    white-space: nowrap;
 }
 
+/* Number inputs */
 input[type="number"] {
-  font-size: 1.6vw;
-  width: 80px;
-  padding: 4px;
-  border: 2px solid #000000;
-  border-radius: 4px;
-  text-align: center;
+    font-size: 1.6vw;
+    width: 80px;
+    padding: 4px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    text-align: center;
 }
 
 /* Start Test button */
 #SoundBTN {
-  font-size: 2.5vw;
-  padding: 6px 12px;
-  border: 3px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
+    font-size: 2.5vw;
+    padding: 6px 12px;
+    border: 3px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 /* Toggle Switch */
 .toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 240px;
-  height: 50px;
+    position: relative;
+    display: inline-block;
+    width: 240px;
+    height: 50px;
 }
 
 .toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .toggle-switch .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
 }
 
 .toggle-switch .slider:before {
-  position: absolute;
-  content: "";
-  height: 38px;
-  width: 38px;
-  left: 4px;
-  bottom: 6px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 38px;
+    width: 38px;
+    left: 4px;
+    bottom: 6px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
 }
 
 .toggle-switch input:checked + .slider {
-  background-color: #025373;
+    background-color: #025373;
 }
 
 .toggle-switch input:checked + .slider:before {
-  transform: translateX(198px);
+    transform: translateX(198px);
 }
 
 .toggle-switch .labels {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 20px;
-  color: white;
-  display: flex;          
-  align-items: center;    
-  justify-content: center;
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
 }
 
 .toggle-switch .labels:before {
-  content: attr(data-on);
-  opacity: 0;
-  transition: all 0.4s;
-  padding-left: 10px;
-  padding-right: 10px;
+    content: attr(data-on);
+    opacity: 0;
+    transition: all 0.4s;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .toggle-switch input:checked ~ .labels:before {
-  opacity: 1;
+    opacity: 1;
 }
 
 .toggle-switch .labels:after {
-  content: attr(data-off);
-  transition: all 0.4s;
-  padding-left: 10px;
-  padding-right: 10px;
+    content: attr(data-off);
+    transition: all 0.4s;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .toggle-switch input:checked ~ .labels:after {
-  opacity: 0;
+    opacity: 0;
 }
 
 /* Responsive for vertical phones */
 @media only screen and (max-width: 600px) {
-  #mainTitle {
-    font-size: 8vw;
-    margin: 10px auto 10px auto;
-    padding: 3px 5px;
-  }
+    #mainTitle {
+        font-size: 8vw;
+        margin: 10px auto 10px auto;
+        padding: 3px 5px;
+    }
 
-  .top-buttons button {
-    font-size: 5vw;
-    padding: 4px 8px;
-  }
+    .top-buttons button {
+        font-size: 5vw;
+        padding: 4px 8px;
+    }
 
-  button {
-    font-size: 6vw; /* Apply Filters default */
-    padding: 8px 12px;
-  }
+    button {
+        font-size: 6vw;
+        padding: 8px 12px;
+    }
 
-  /* Start Test button slightly smaller than before */
-  #SoundBTN {
-    font-size: 10vw; /* slightly smaller */
-    padding: 8px 12px;
-  }
+    #SoundBTN {
+        font-size: 10vw;
+        padding: 8px 12px;
+    }
 
-  input[type="number"] {
-    font-size: 3.2vw;
-    width: 90px;
-  }
+    input[type="number"] {
+        font-size: 3.2vw;
+        width: 90px;
+    }
 
-  /* Make labels bigger */
-  .filter-controls label {
-    font-size: 4vw;
-  }
+    .filter-controls label {
+        font-size: 4vw;
+    }
 
-  .bottom-controls {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 10px;
-  }
+    .bottom-controls {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 10px;
+    }
 
-  /* Stack Start Test and Apply Filters vertically on left */
-  .controls-left {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    width: 40%;
-  }
+    .controls-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 40%;
+    }
 
-  #SoundBTN, #applyFilters {
-    width: 100%;
-    text-align: center;
-  }
+    #SoundBTN,
+    #applyFilters {
+        width: 100%;
+        text-align: center;
+    }
 
-  /* Stack Low/High inputs vertically on right */
-  .controls-right {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    width: 50%;
-  }
+    .controls-right {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        width: 50%;
+    }
 
-  .filter-controls {
-    flex-direction: column;
-    align-items: flex-end;
-  }
+    .filter-controls {
+        flex-direction: column;
+        align-items: flex-end;
+    }
 
-  /* Toggle adjustments */
-  .toggle-switch {
-    width: 180px;
-    height: 40px;
-  }
+    .toggle-switch {
+        width: 180px;
+        height: 40px;
+    }
 
-  .toggle-switch .slider:before {
-    height: 32px;
-    width: 32px;
-    bottom: 4px;
-  }
+    .toggle-switch .slider:before {
+        height: 32px;
+        width: 32px;
+        bottom: 4px;
+    }
 
-  .toggle-switch input:checked + .slider:before {
-    transform: translateX(144px);
-  }
+    .toggle-switch input:checked + .slider:before {
+        transform: translateX(144px);
+    }
 
-  .toggle-switch .labels {
-    font-size: 16px;
-  }
+    .toggle-switch .labels {
+        font-size: 16px;
+    }
 
-  .toggle-switch .labels:before,
-  .toggle-switch .labels:after {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
+    .toggle-switch .labels:before,
+    .toggle-switch .labels:after {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+/* ======= DROPDOWN STYLES ======= */
+#gridModeDropdown {
+    font-size: 2.5vw;
+    padding: 6px 12px;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    width: auto;
+    max-width: 95vw;
+    /* prevent overflow horizontally */
+    box-sizing: border-box;
+    max-height: 40vh;
+    /* prevent overflow vertically */
+    overflow-y: auto;
+}
+
+#gridModeDropdown:hover {
+    background-color: #f2d785;
+    border: 3px solid #6e4900;
+    color: #6e4900;
+}
+
+#gridModeLabel {
+    font-size: 2.5vw;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+/* Portrait (vertical) screens adjustments for dropdown */
+@media (orientation: portrait) {
+    #gridModeDropdown {
+        font-size: 5vw;
+        width: 100%;
+        max-width: 80vw;
+        /* ensures dropdown stays in viewport */
+        max-height: 35vh;
+        /* ensures dropdown list fits screen */
+    }
+
+    #gridModeLabel {
+        font-size: 5vw;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        max-width: 90vw;
+    }
 }
