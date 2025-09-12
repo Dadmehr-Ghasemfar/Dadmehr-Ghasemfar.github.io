@@ -2,7 +2,9 @@ let grid = [];
 let cols, rows;
 let grid_res = 20;
 let start, end;
-let grid_mode = "Empty";
+let grid_mode = "Rectangles";
+let algorithm = "A*";
+let obstacleLevel = "Low";
 
 // padding values
 let padLeft = 10;
@@ -22,6 +24,25 @@ function setup() {
         dropdown.addEventListener("change", () => {
             grid_mode = dropdown.value;
             createGrid(grid_mode);
+        });
+    }
+
+    const algoDropdown = document.getElementById("algorithmDropdown");
+    if (algoDropdown) {
+        algoDropdown.addEventListener("change", () => {
+            algorithm = algoDropdown.value;
+            // Here you can call a function if you want to react immediately
+            // e.g., updateAlgorithm(algorithm);
+        });
+    }
+
+    const obstacleToggle = document.getElementById("obstacleToggle");
+
+    if (obstacleToggle) {
+        obstacleToggle.addEventListener("change", () => {
+            obstacleLevel = obstacleToggle.checked ? "High" : "Low";
+            console.log("Obstacle level:", obstacleLevel);
+            // Optionally, update your grid generation logic here
         });
     }
 }
@@ -63,10 +84,10 @@ function draw() {
     rect(padLeft + start.x * grid_res, padTop + start.y * grid_res, grid_res, grid_res);
     fill(0, 0, 255);
     rect(padLeft + end.x * grid_res, padTop + end.y * grid_res, grid_res, grid_res);
-    
-    fill(0);
+
+    fill(255, 0, 0);
     textSize(32);
-    text("** Incomplete - Under Construction **", width/2 - 200, height/2 - 50, 400, 100);
+    text("** Incomplete - Under Construction **", width / 2 - 200, height / 2 - 50, 400, 100);
 }
 
 function mouseDragged() {

@@ -219,8 +219,10 @@ input[type="number"] {
     content: attr(data-on);
     opacity: 0;
     transition: all 0.4s;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 30px; /* increase padding to center better */
+    padding-right: 30px;
+    font-size: 1.6vw;
+    text-align: center;
 }
 
 .toggle-switch input:checked ~ .labels:before {
@@ -230,8 +232,10 @@ input[type="number"] {
 .toggle-switch .labels:after {
     content: attr(data-off);
     transition: all 0.4s;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 30px; /* increase padding to center better */
+    padding-right: 30px;
+    font-size: 1.6vw;
+    text-align: center;
 }
 
 .toggle-switch input:checked ~ .labels:after {
@@ -323,14 +327,16 @@ input[type="number"] {
 
     .toggle-switch .labels:before,
     .toggle-switch .labels:after {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 16px; /* adjust for smaller screen */
+        padding-right: 16px;
+        font-size: 3vw;
+        text-align: center;
     }
 }
 
-/* ======= DROPDOWN STYLES ======= */
-#gridModeDropdown {
-    font-size: 2.5vw;
+/* ======= DROPDOWN STYLES (GENERIC FOR ALL) ======= */
+.dropdown {
+    font-size: 2vw;
     padding: 6px 12px;
     border: 3px solid #000000;
     border-radius: 10px;
@@ -339,45 +345,55 @@ input[type="number"] {
     cursor: pointer;
     transition-duration: 0.4s;
     width: auto;
-    max-width: 95vw;
-    /* prevent overflow horizontally */
+    max-width: 100%;
     box-sizing: border-box;
-    max-height: 40vh;
-    /* prevent overflow vertically */
-    overflow-y: auto;
 }
 
-#gridModeDropdown:hover {
+.dropdown:hover {
     background-color: #f2d785;
     border: 3px solid #6e4900;
     color: #6e4900;
 }
 
-#gridModeLabel {
-    font-size: 2.5vw;
+/* Labels for dropdowns */
+.dropdown + label,
+.filter-controls label {
+    font-size: 2vw;
     margin-right: 5px;
     white-space: nowrap;
 }
 
-/* Portrait (vertical) screens adjustments for dropdown */
+/* Make Grids label and number input bigger */
+#gridNumber {
+    font-size: 2vw;
+    width: 100px;
+    padding: 6px;
+}
+
+.filter-controls label[for="gridNumber"] {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+/* Portrait (vertical) screens adjustments for dropdowns and grids input */
 @media (orientation: portrait) {
-    #gridModeDropdown {
-        font-size: 5vw;
+    .dropdown {
+        font-size: 6vw;
         width: 100%;
-        max-width: 80vw;
-        /* ensures dropdown stays in viewport */
-        max-height: 35vh;
-        /* ensures dropdown list fits screen */
+        max-width: 95vw;
     }
 
-    #gridModeLabel {
-        font-size: 5vw;
+    .dropdown + label,
+    .filter-controls label {
+        font-size: 6vw;
     }
 
-    .filter-controls {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-        max-width: 90vw;
+    #gridNumber {
+        font-size: 4vw;
+        width: 90px;
+    }
+
+    .filter-controls label[for="gridNumber"] {
+        font-size: 4vw;
     }
 }

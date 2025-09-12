@@ -22,25 +22,48 @@
 
   <!-- Bottom controls -->
   <div class="bottom-controls">
+
+    <!-- Left side: dropdowns -->
     <div class="controls-left">
-      <!-- Dropdown for grid mode moved to left side -->
       <div class="filter-controls">
-        <label for="gridModeDropdown">Grid Mode:</label>
-        <select id="gridModeDropdown">
-          <option value="Empty">Empty</option>
-          <option value="Circle">Circle</option>
-          <option value="Rectangles">Rectangles</option>
-          <option value="L-Shapes">L-Shapes</option>
-          <option value="Random">Random</option>
-          <option value="Custom">Custom</option>
+        <label for="gridModeDropdown">Grid Mode</label>
+        <select id="gridModeDropdown" class="dropdown">
+          <option>Empty</option>
+          <option>Custom</option>
+          <option>Circle</option>
+          <option>Rectangles</option>
+          <option>L-Shapes</option>
+          <option>Random</option>
+        </select>
+
+        <label for="algorithmDropdown">Algorithm</label>
+        <select id="algorithmDropdown" class="dropdown">
+          <option>A*</option>
+          <option>Dijkstra</option>
+          <option>Depth-First</option>
+          <option>Breadth-First</option>
         </select>
       </div>
-      <!-- Add other left-side buttons here if needed -->
     </div>
 
+    <!-- Right side: new controls -->
     <div class="controls-right">
-      <!-- Right-side buttons remain here -->
+      <button id="calculateBtn">Calculate</button>
+
+      <div class="filter-controls">
+        <label for="gridNumber">Grids</label>
+        <input type="number" id="gridNumber" value="20" min="5" max="100">
+      </div>
+
+      <label class="toggle-switch">
+  <input type="checkbox" id="obstacleToggle">
+  <span class="slider"></span>
+  <span class="labels" data-on="Difficult" data-off="Easy"></span>
+</label>
+
+      
     </div>
+
   </div>
 
   <!-- Put JS AFTER all DOM elements -->
