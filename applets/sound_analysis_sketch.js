@@ -62,6 +62,11 @@
         let essentiaInitialized = false;
         /* ---------------------------------- */
 
+        let fft_history = []; // Array to store previous FFTs
+        const num_fft_history = 5; // How many previous FFTs to keep
+        const num_fft_separation = 5; // Frames between saved FFTs
+        let fft_frame_counter = 0; // Counter to track frames for saving FFTs
+
 
 
         function setup() {
@@ -210,7 +215,7 @@
                     audioNodes.unfilteredAnalyser.getFloatFrequencyData(frequencyData);
                     let max_x_title = (sampling_rate / 2).toFixed(0) + " Hz";
                     draw_fft_plot(
-                        frequencyData,
+                        frequencyData, fft_history,
                         graph2X - graphWidth / 2, graph2Y - graphHeight / 2, graphWidth, graphHeight,
                         color(0),
                         "Live Frequency Spectrum",
@@ -251,6 +256,23 @@
                 textAlign(LEFT, CENTER);
                 text(`Flux: ${currentFlux.toFixed(3)} (thr: ${currentFluxThreshold.toFixed(3)})`, rightX, startY);
                 text(`Onset BPM: ${bpm > 0 ? bpm.toFixed(1) : '--'}`, rightX, startY + lineSpacing);
+            }
+
+            fft_frame_counter++;
+            if (fft_frame_counter >= num_fft_separation) {
+                if (audioNodes.unfilteredAnalyser) {
+                    const currentFFT = new Float32Array(audioNodes.unfilteredAnalyser.frequencyBinCount);
+                    audioNodes.unfilteredAnalyser.getFloatFrequencyData(currentFFT);
+
+                    // Add to history
+                    fft_history.push(currentFFT);
+
+                    // Keep only the last num_fft_history FFTs
+                    if (fft_history.length > num_fft_history) {
+                        fft_history.shift();
+                    }
+                }
+                fft_frame_counter = 0;
             }
         }
 
@@ -737,20 +759,14 @@
             }
         }
 
-        function draw_fft_plot(frequencyData, x_pos, y_pos, width, height, bar_color,
+        function draw_fft_plot(frequencyData, fft_history, x_pos, y_pos, width, height, bar_color,
             title, x_axis_title, y_axis_title, max_x_title, min_x_title, max_y_title, min_y_title, horizontalMode) {
 
             let padding = 40;
             let boxPadding = 25;
             let contentOffsetX = 15;
-            let titleOffsetY = horizontalMode ? -40 : -20; // move titles higher in vertical mode
-            textSize(24);
-            fill(0);
-            noStroke();
-            text(title, x_pos + width / 2, y_pos + titleOffsetY + 10);
+            let titleOffsetY = horizontalMode ? -40 : -20;
             let verticalLabelOffsetX = 50;
-            let numBars = frequencyData.length;
-            let barWidth = (width - 2 * padding) / numBars;
 
             // Grey background box
             fill(245);
@@ -767,9 +783,31 @@
             line(x_pos + padding + contentOffsetX, y_pos + height - padding, x_pos + width - padding, y_pos + height - padding);
             line(x_pos + padding + contentOffsetX, y_pos + height - padding, x_pos + padding + contentOffsetX, y_pos + padding);
 
-            // Bars
+            const numBars = frequencyData.length;
+            const barWidth = (width - 2 * padding) / numBars;
+
+            // Draw FFT history (older = lighter grey, newer = darker grey)
+            for (let h = 0; h < fft_history.length; h++) {
+                const histFFT = fft_history[h];
+                const shade = map(h, 0, fft_history.length, 180, 60); // older = lighter
+                fill(shade);
+                noStroke();
+                for (let i = 0; i < numBars; i++) {
+                    let db = histFFT[i];
+                    let scaledHeight = map(db, audioNodes.analyser.minDecibels, audioNodes.analyser.maxDecibels, 0, height - 2 * padding);
+                    scaledHeight = max(scaledHeight, 0);
+                    rect(
+                        x_pos + padding + contentOffsetX + i * barWidth,
+                        y_pos + height - padding - scaledHeight,
+                        barWidth,
+                        scaledHeight
+                    );
+                }
+            }
+
+            // Draw current FFT on top in black
+            fill(0);
             noStroke();
-            fill(bar_color);
             for (let i = 0; i < numBars; i++) {
                 let db = frequencyData[i];
                 let scaledHeight = map(db, audioNodes.analyser.minDecibels, audioNodes.analyser.maxDecibels, 0, height - 2 * padding);
