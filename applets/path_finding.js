@@ -1,10 +1,12 @@
 let grid = [];
 let cols, rows;
-let grid_res = 20;
+let numGrids = 20; // number of grids in each dimension
+let grid_res; // computed size of each cell
 let start, end;
 let grid_mode = "Rectangles";
 let algorithm = "A*";
-let obstacleLevel = "Low";
+let isDense = false; // connected to toggle
+let denseGridNoStroke = 8; // if grid_res < this, draw grid without stroke
 
 // padding values
 let padLeft = 10;
@@ -18,12 +20,12 @@ function setup() {
     start = createVector(0, 0);
     end = createVector(0, 0);
 
-    // hook into HTML dropdown
+    // dropdowns
     const dropdown = document.getElementById("gridModeDropdown");
     if (dropdown) {
         dropdown.addEventListener("change", () => {
             grid_mode = dropdown.value;
-            createGrid(grid_mode);
+            createGrid(grid_mode, isDense);
         });
     }
 
@@ -31,18 +33,36 @@ function setup() {
     if (algoDropdown) {
         algoDropdown.addEventListener("change", () => {
             algorithm = algoDropdown.value;
-            // Here you can call a function if you want to react immediately
-            // e.g., updateAlgorithm(algorithm);
         });
     }
 
-    const obstacleToggle = document.getElementById("obstacleToggle");
+    // number of grids input
+    const gridNumberInput = document.getElementById("gridNumber");
+    if (gridNumberInput) {
+        gridNumberInput.addEventListener("change", () => {
+            let val = parseInt(gridNumberInput.value) || 20;
+            if (val < 5) val = 5;
+            gridNumberInput.value = val;
+            numGrids = val;
+            createGrid(grid_mode, isDense);
+        });
+    }
 
-    if (obstacleToggle) {
-        obstacleToggle.addEventListener("change", () => {
-            obstacleLevel = obstacleToggle.checked ? "High" : "Low";
-            console.log("Obstacle level:", obstacleLevel);
-            // Optionally, update your grid generation logic here
+    // toggle now controls isDense
+    const denseToggle = document.getElementById("obstacleDensity");
+    if (denseToggle) {
+        denseToggle.addEventListener("change", () => {
+            isDense = denseToggle.checked;
+            console.log("Dense mode:", isDense);
+            createGrid(grid_mode, isDense);
+        });
+    }
+
+    // calculate button (does not reset grid)
+    const calculateBtn = document.getElementById("calculateBtn");
+    if (calculateBtn) {
+        calculateBtn.addEventListener("click", () => {
+            console.log("Would calculate path using:", algorithm);
         });
     }
 }
@@ -50,24 +70,32 @@ function setup() {
 function draw() {
     background(220);
 
-    // recalc padding and grid size dynamically
-    calculatePadding();
-    cols = floor((width - padLeft - padRight) / grid_res);
-    rows = floor((height - padTop - padBottom) / grid_res);
+    // compute grid_res based on number of grids
+    grid_res = floor(min(width, height) / numGrids);
 
-    // reset start/end if needed
+    cols = numGrids;
+    rows = numGrids;
+
+    calculatePadding();
+
+    // reset start/end
     start.set(0, 0);
     end.set(cols - 1, rows - 1);
 
-    // create grid if empty (first frame or after resize)
+    // create grid if empty
     if (grid.length !== cols || grid[0]?.length !== rows) {
-        createGrid(grid_mode);
+        createGrid(grid_mode, isDense);
     }
 
     // draw grid
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            stroke(200);
+            if (grid_res < denseGridNoStroke) {
+                noStroke();
+            } else {
+                stroke(200);
+            }
+
             if (grid[i][j] === 1) {
                 fill(0); // obstacle
             } else if (grid[i][j] === 2) {
@@ -85,6 +113,7 @@ function draw() {
     fill(0, 0, 255);
     rect(padLeft + end.x * grid_res, padTop + end.y * grid_res, grid_res, grid_res);
 
+    // overlay text
     fill(255, 0, 0);
     textSize(32);
     text("** Incomplete - Under Construction **", width / 2 - 200, height / 2 - 50, 400, 100);
@@ -92,15 +121,41 @@ function draw() {
 
 function mouseDragged() {
     if (grid_mode === "Custom") {
-        let i = floor((mouseX - padLeft) / grid_res);
-        let j = floor((mouseY - padTop) / grid_res);
-        if (i >= 0 && i < cols && j >= 0 && j < rows) {
-            grid[i][j] = 1;
+        let brushRadius = max(1, floor(numGrids / 60));
+        let iCenter = floor((mouseX - padLeft) / grid_res);
+        let jCenter = floor((mouseY - padTop) / grid_res);
+
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                let dx = i - iCenter;
+                let dy = j - jCenter;
+                if (dx * dx + dy * dy <= brushRadius * brushRadius) {
+                    grid[i][j] = 1;
+                }
+            }
         }
     }
 }
 
-function createGrid(mode) {
+function mousePressed() {
+    if (grid_mode === "Custom") {
+        let brushRadius = max(1, floor(numGrids / 50));
+        let iCenter = floor((mouseX - padLeft) / grid_res);
+        let jCenter = floor((mouseY - padTop) / grid_res);
+
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                let dx = i - iCenter;
+                let dy = j - jCenter;
+                if (dx * dx + dy * dy <= brushRadius * brushRadius) {
+                    grid[i][j] = grid[i][j] === 1 ? 0 : 1;
+                }
+            }
+        }
+    }
+}
+
+function createGrid(mode, isDense) {
     grid = [];
     for (let i = 0; i < cols; i++) {
         grid[i] = [];
@@ -110,70 +165,74 @@ function createGrid(mode) {
     }
 
     if (mode === "Circle") {
-        let cx = floor(cols / 2);
-        let cy = floor(rows / 2);
-        let r = min(cols, rows) / 4;
-        for (let i = 0; i < cols; i++) {
-            for (let j = 0; j < rows; j++) {
-                let d = dist(i, j, cx, cy);
-                if (d < r) grid[i][j] = 1;
+        if (isDense) {
+            let circleCount = 12 + floor(random(5)); // more circles
+            for (let c = 0; c < circleCount; c++) {
+                let cx = floor(random(cols));
+                let cy = floor(random(rows));
+                let r = floor(random(floor(cols / 30), floor(cols / 15))); // smaller circles
+                for (let i = 0; i < cols; i++) {
+                    for (let j = 0; j < rows; j++) {
+                        if (dist(i, j, cx, cy) < r) grid[i][j] = 1;
+                    }
+                }
+            }
+        } else {
+            let cx = floor(cols / 2);
+            let cy = floor(rows / 2);
+            let r = floor(cols / 4);
+            for (let i = 0; i < cols; i++) {
+                for (let j = 0; j < rows; j++) {
+                    if (dist(i, j, cx, cy) < r) grid[i][j] = 1;
+                }
             }
         }
     } else if (mode === "Rectangles") {
-        for (let n = 0; n < 5; n++) {
-            let rx = floor(random(cols - 5));
-            let ry = floor(random(rows - 5));
-            let rw = floor(random(3, 6));
-            let rh = floor(random(3, 6));
-            for (let i = rx; i < rx + rw && i < cols; i++) {
-                for (let j = ry; j < ry + rh && j < rows; j++) {
+        let rectCount;
+        if (numGrids <= 30) {
+            rectCount = isDense ? max(1, floor(numGrids / 2)) : max(1, floor(numGrids / 4));
+        } else {
+            rectCount = isDense ? max(1, floor(numGrids / 4)) : max(1, floor(numGrids / 8));
+        }
+        let rectSize = max(1, floor(numGrids / 10));
+        for (let n = 0; n < rectCount; n++) {
+            let rx = floor(random(cols - rectSize));
+            let ry = floor(random(rows - rectSize));
+            for (let i = rx; i < rx + rectSize && i < cols; i++) {
+                for (let j = ry; j < ry + rectSize && j < rows; j++) {
                     grid[i][j] = 1;
                 }
             }
         }
     } else if (mode === "L-Shapes") {
-        for (let n = 0; n < 3; n++) {
-            let rx = floor(random(cols - 6));
-            let ry = floor(random(rows - 6));
-            for (let i = 0; i < 5; i++) {
+        let LMultiplier = isDense ? 3 : 1;
+        let armLength = max(1, floor(numGrids * 0.2));
+        for (let n = 0; n < 3 * LMultiplier; n++) {
+            let rx = floor(random(cols - armLength));
+            let ry = floor(random(rows - armLength));
+            for (let i = 0; i < armLength; i++) {
                 grid[rx + i][ry] = 1;
                 grid[rx][ry + i] = 1;
             }
         }
     } else if (mode === "Random") {
+        let density = isDense ? 0.3 : 0.05; // updated fill percentages
         for (let i = 0; i < cols; i++) {
             for (let j = 0; j < rows; j++) {
-                if (random(1) < 0.2) grid[i][j] = 1;
+                if (random(1) < density) grid[i][j] = 1;
             }
         }
     }
     // Empty and Custom leave grid blank
 }
 
-// calculate padding dynamically and center grid horizontally
 function calculatePadding() {
-    let gridWidth, gridHeight;
+    padTop = width < height ? height / 5 : 9 * height / 32;
+    padBottom = width < height ? height / 5 : height / 6;
 
-    if (width < height) {
-        // vertical
-        padTop = height / 5;
-        padBottom = height / 5;
-    } else {
-        // horizontal → add more top padding
-        padTop = 9 * height / 32; // increased from height/4
-        padBottom = height / 6;
-    }
-
-    cols = floor((width - 20) / grid_res);
-    rows = floor((height - padTop - padBottom) / grid_res);
-
-    gridWidth = cols * grid_res;
-    gridHeight = rows * grid_res;
-
-    padLeft = (width - gridWidth) / 2;
+    let gridWidth = cols * grid_res;
+    padLeft = max((width - gridWidth) / 2, 10);
     padRight = padLeft;
-
-    if (padLeft < 10) padLeft = 10;
 }
 
 function windowResized() {

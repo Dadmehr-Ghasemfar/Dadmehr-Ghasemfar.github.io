@@ -28,10 +28,10 @@
       <div class="filter-controls">
         <label for="gridModeDropdown">Grid Mode</label>
         <select id="gridModeDropdown" class="dropdown">
+          <option>Rectangles</option>
           <option>Empty</option>
           <option>Custom</option>
           <option>Circle</option>
-          <option>Rectangles</option>
           <option>L-Shapes</option>
           <option>Random</option>
         </select>
@@ -55,11 +55,12 @@
         <input type="number" id="gridNumber" value="20" min="5" max="100">
       </div>
 
-      <label class="toggle-switch">
-  <input type="checkbox" id="obstacleToggle">
-  <span class="slider"></span>
-  <span class="labels" data-on="Difficult" data-off="Easy"></span>
-</label>
+<div class="filter-controls">
+  <label class="toggle-switch">
+    <input type="checkbox" id="obstacleDensity" data-on="Sparse" data-off="Dense">
+    <span class="labels" data-on="Sparse" data-off="Dense"></span>
+  </label>
+</div>
 
       
     </div>
