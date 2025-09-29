@@ -7,17 +7,16 @@ canvas {
     z-index: -1;
     width: 100%;
     height: 100%;
-    /* Add these for mobile stability */
+    /* Mobile fixes */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    /* Prevent elastic scrolling issues */
-    touch-action: none;
-    -webkit-overflow-scrolling: touch;
+    /* Prevent canvas from moving during scroll */
+    overflow: hidden;
 }
 
-/* Add this to handle the body scrolling */
+/* Keep your existing body styles but add overflow control */
 body {
     margin: 0;
     min-height: 100vh;
@@ -25,12 +24,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding-bottom: 120px;
-    /* space for bottom row */
-    /* Prevent body scrolling on mobile */
-    overflow: hidden;
-    height: 100vh;
-    position: fixed;
-    width: 100%;
+    /* Allow scrolling but keep canvas fixed */
+    position: relative;
 }
 
 /* Update the allContent container if you have scrolling content */
