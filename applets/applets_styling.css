@@ -1,5 +1,4 @@
 /* Ensure p5.js canvas is in the background */
-/* Ensure p5.js canvas is in the background */
 canvas {
     position: fixed;
     top: 0;
@@ -24,18 +23,11 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding-bottom: 120px;
-    /* Allow scrolling but keep canvas fixed */
-    position: relative;
-}
-
-/* Update the allContent container if you have scrolling content */
-#allContent {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    height: calc(100vh - 140px);
-    /* Adjust based on your header/footer heights */
-    margin-top: 80px;
-    /* Space for your title and top buttons */
+    /* Prevent scrolling on the body */
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
 }
 
 /* Reset and base styles */
