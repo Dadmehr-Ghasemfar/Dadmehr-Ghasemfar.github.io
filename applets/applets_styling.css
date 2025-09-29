@@ -1,4 +1,5 @@
 /* Ensure p5.js canvas is in the background */
+/* Ensure p5.js canvas is in the background */
 canvas {
     position: fixed;
     top: 0;
@@ -6,20 +7,45 @@ canvas {
     z-index: -1;
     width: 100%;
     height: 100%;
+    /* Add these for mobile stability */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Prevent elastic scrolling issues */
+    touch-action: none;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Reset and base styles */
-* {
-    box-sizing: border-box;
-}
-
+/* Add this to handle the body scrolling */
 body {
     margin: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-bottom: 120px; /* space for bottom row */
+    padding-bottom: 120px;
+    /* space for bottom row */
+    /* Prevent body scrolling on mobile */
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+}
+
+/* Update the allContent container if you have scrolling content */
+#allContent {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: calc(100vh - 140px);
+    /* Adjust based on your header/footer heights */
+    margin-top: 80px;
+    /* Space for your title and top buttons */
+}
+
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
 }
 
 /* Main title */
@@ -158,7 +184,8 @@ input[type="number"] {
 .toggle-switch {
     position: relative;
     display: inline-block;
-    width: auto; /* allow toggle width to adapt */
+    width: auto;
+    /* allow toggle width to adapt */
     min-width: 140px;
     height: 40px;
 }
@@ -187,11 +214,13 @@ input[type="number"] {
     color: white;
     pointer-events: none;
     text-align: center;
-    width: 90%; /* allow some padding */
+    width: 90%;
+    /* allow some padding */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(0.7em, 2.2vw, 1.3em); /* slightly smaller scaling */
+    font-size: clamp(0.7em, 2.2vw, 1.3em);
+    /* slightly smaller scaling */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
