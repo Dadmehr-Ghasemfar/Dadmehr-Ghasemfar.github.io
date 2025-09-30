@@ -12,7 +12,7 @@ canvas {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     /* Prevent canvas from moving during scroll */
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 /* Keep your existing body styles but add overflow control */
@@ -23,11 +23,16 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     padding-bottom: 120px;
-    /* Prevent scrolling on the body */
+    /* Prevent body scrolling */
     overflow: hidden;
     height: 100vh;
     position: fixed;
     width: 100%;
+}
+
+/* Remove scrolling from allContent and adjust positioning */
+#allContent {
+    margin-top: 10px; /* Reduced from 80px to bring content higher */
 }
 
 /* Reset and base styles */
@@ -35,7 +40,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Main title */
+/* Main title - moved higher */
 #mainTitle {
     font-size: 4vw;
     font-weight: bold;
@@ -44,18 +49,18 @@ body {
     border: 3px solid #000000;
     padding: 5px 5px 0 5px;
     width: fit-content;
-    margin: 20px auto 10px auto;
+    margin: 10px auto 5px auto; /* Reduced top margin from 20px to 10px */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Top buttons under title */
+/* Top buttons under title - moved higher */
 .top-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Reduced from 20px */
     flex-wrap: wrap;
 }
 
@@ -132,26 +137,24 @@ button:hover {
     min-width: 120px;
 }
 
-/* Filter labels and inputs */
+/* Filter labels and inputs - UPDATED FOR SIDE BY SIDE */
 .filter-controls {
     display: flex;
     align-items: center;
-    max-width: 95vw;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 5px; /* Space between label and input */
 }
 
 .filter-controls label {
-    font-size: 2vw;
+    font-size: 1.6vw;
     font-weight: bold;
-    margin-right: 5px;
     white-space: nowrap;
 }
 
 /* Number inputs */
 input[type="number"] {
     font-size: 1.6vw;
-    width: 80px;
+    width: 70px; /* Reduced width for side by side */
     padding: 4px;
     border: 2px solid #000000;
     border-radius: 4px;
@@ -225,8 +228,12 @@ input[type="number"] {
 @media only screen and (max-width: 600px) {
     #mainTitle {
         font-size: 8vw;
-        margin: 10px auto 10px auto;
+        margin: 5px auto 5px auto; /* Reduced margins for mobile */
         padding: 3px 5px;
+    }
+
+    .top-buttons {
+        margin-bottom: 5px; /* Reduced from 10px */
     }
 
     .top-buttons button {
@@ -246,98 +253,61 @@ input[type="number"] {
 
     input[type="number"] {
         font-size: 3.2vw;
-        width: 90px;
+        width: 60px; /* Even smaller for mobile */
     }
 
     .filter-controls label {
-        font-size: 4vw;
+        font-size: 3.2vw;
     }
 
     .bottom-controls {
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
         padding: 10px;
     }
 
     .controls-left {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         gap: 10px;
         width: 40%;
     }
 
     #SoundBTN,
     #applyFilters {
-        width: 100%;
+        width: auto;
         text-align: center;
     }
 
     .controls-right {
-        flex-direction: column;
-        align-items: flex-end;
+        flex-direction: row;
+        align-items: center;
         gap: 10px;
-        width: 50%;
+        width: 55%;
+        justify-content: flex-end;
     }
 
+    /* UPDATED: Keep filter controls in row layout for mobile */
     .filter-controls {
-        flex-direction: column;
-        align-items: flex-end;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        justify-content: flex-end;
     }
 
     .toggle-switch {
         width: auto;
-        min-width: 120px;
-        height: 36px;
+        min-width: 100px;
+        height: 32px;
     }
 
     .toggle-switch .labels {
-        font-size: clamp(0.6em, 4vw, 1.1em);
+        font-size: clamp(0.6em, 3vw, 1em);
     }
 }
 
-/* ======= DROPDOWN STYLES (GENERIC FOR ALL) ======= */
-.dropdown {
-    font-size: 2vw;
-    padding: 6px 12px;
-    border: 3px solid #000000;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #000000;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    width: auto;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.dropdown:hover {
-    background-color: #f2d785;
-    border: 3px solid #6e4900;
-    color: #6e4900;
-}
-
-/* Labels for dropdowns */
-.dropdown + label,
-.filter-controls label {
-    font-size: 2vw;
-    margin-right: 5px;
-    white-space: nowrap;
-}
-
-/* Make Grids label and number input bigger */
-#gridNumber {
-    font-size: 2vw;
-    width: 100px;
-    padding: 6px;
-}
-
-.filter-controls label[for="gridNumber"] {
-    font-size: 2vw;
-    font-weight: bold;
-}
-
-/* Portrait (vertical) screens adjustments for dropdowns and grids input */
+/* Portrait (vertical) screens adjustments */
 @media (orientation: portrait) {
     .dropdown {
         font-size: 6vw;
@@ -357,5 +327,20 @@ input[type="number"] {
 
     .filter-controls label[for="gridNumber"] {
         font-size: 4vw;
+    }
+    
+    /* Ensure filter controls stay side by side in portrait */
+    .filter-controls {
+        flex-direction: row;
+        gap: 5px;
+    }
+    
+    .filter-controls label {
+        font-size: 3.5vw;
+    }
+    
+    input[type="number"] {
+        font-size: 3.5vw;
+        width: 65px;
     }
 }
